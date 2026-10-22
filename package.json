@@ -1,0 +1,14 @@
+{
+  "name": "healthy-portal",
+  "version": "1.0.0",
+  "description": "Healthy Portal — Lusion.co Styled Member Benefits & Financial Wellness Platform",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "generate": "node scripts/generate-pages.js"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
