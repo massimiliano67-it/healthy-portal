@@ -476,7 +476,7 @@ function generateHomePage() {
             <span class="hp-hero__kicker">October Prevention &amp; Wellness</span>
             <h1 class="hp-hero__title">IF HEALTH IS THE GOAL, WE ARE WITH YOU!</h1>
             <p class="hp-hero__subtitle">
-              Enjoy <strong>$0 Preventive Medical Screenings</strong> at RedSalud, Interclínica, and Achs Salud + up to 35% off outdoor running events and sports clubs across the country.
+              Enjoy <strong>$0 Preventive Medical Screenings</strong> at HealthyNet, Interclínica, and SAI Health + up to 35% off outdoor running events and sports clubs across the country.
             </p>
             <div class="hp-hero__ctas">
               <a href="/benefits/index.html" class="hp-btn hp-btn--gold">Discover Monthly Benefits →</a>
@@ -505,7 +505,7 @@ function generateHomePage() {
             <span class="hp-hero__kicker">Academic Excellence Awards 2026</span>
             <h1 class="hp-hero__title">REWARDING YOUR FAMILY'S EDUCATIONAL EFFORT</h1>
             <p class="hp-hero__subtitle">
-              Apply today for PAES University Admission and Higher Education recognitions. Win laptops, technological equipment, and annual tuition scholarships.
+              Apply today for SER University Admission and Higher Education recognitions. Win laptops, technological equipment, and annual tuition scholarships.
             </p>
             <div class="hp-hero__ctas">
               <a href="/benefits/education-and-academic-excellence.html" class="hp-btn hp-btn--gold">Apply for Scholarships →</a>
@@ -529,7 +529,7 @@ function generateHomePage() {
             <span class="hp-hero__kicker">Culture &amp; Panoramas</span>
             <h1 class="hp-hero__title">YOUR NEXT CULTURAL OUTING HAS UP TO 25% OFF!</h1>
             <p class="hp-hero__subtitle">
-              Choose your favorite play at Teatro Mori or the Municipal Theater of Santiago, or book a Low Season stay at our 24 nature resorts.
+              Choose your favorite play at Teather Moon or the Municipal Theater of Santiago, or book a Low Season stay at our 24 nature resorts.
             </p>
             <div class="hp-hero__ctas">
               <a href="/benefits/culture-and-events.html" class="hp-btn hp-btn--gold">Explore Culture &amp; Tickets →</a>

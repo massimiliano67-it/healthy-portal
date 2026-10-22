@@ -144,11 +144,11 @@
       heroSubtitle: 'Preventive healthcare at $0, sports events, tuition scholarships, and cultural panoramas for your entire family.',
       subpages: [
         { slug: 'index', title: 'Featured Benefits of the Month', href: '/benefits/index.html', isHub: true, tag: 'Top', summary: 'Discover this month’s top member deals in preventive health screenings, outdoor runs, pharmacies, and theater.' },
-        { slug: 'health-and-sports', title: 'Health & Sports', href: '/benefits/health-and-sports.html', tag: '', summary: '$0 preventive exams at RedSalud, Interclínica, and Achs Salud, pharmacy discounts at Cruz Verde, and running events.' },
+        { slug: 'health-and-sports', title: 'Health & Sports', href: '/benefits/health-and-sports.html', tag: '', summary: '$0 preventive exams at HealthyNet, Interclínica, and SAI Health, pharmacy discounts at Cruz Verde, and running events.' },
         { slug: 'waiting-list-plan', title: 'Waiting List Resolution Plan', href: '/benefits/waiting-list-plan.html', tag: 'New', summary: 'Special clinical support program helping members and dependents resolve pending specialist consultations and surgeries.' },
-        { slug: 'education-and-academic-excellence', title: 'Education & Academic Excellence Awards', href: '/benefits/education-and-academic-excellence.html', tag: '', summary: 'Academic Excellence Awards 2026, PAES recognition scholarships, laptops, and higher education tuition discounts.' },
+        { slug: 'education-and-academic-excellence', title: 'Education & Academic Excellence Awards', href: '/benefits/education-and-academic-excellence.html', tag: '', summary: 'Academic Excellence Awards 2026, SER recognition scholarships, laptops, and higher education tuition discounts.' },
         { slug: 'family-savings', title: 'Everyday Family Savings', href: '/benefits/family-savings.html', tag: '', summary: 'Discounts on domestic gas cylinders, supermarkets, optical stores, dental care, and school supplies.' },
-        { slug: 'culture-and-events', title: 'Culture, Theater & Panoramas', href: '/benefits/culture-and-events.html', tag: '', summary: 'Up to 25% off tickets at Teatro Mori, Municipal Theater, cinemas, concerts, and the Healthy Experience Box.' },
+        { slug: 'culture-and-events', title: 'Culture, Theater & Panoramas', href: '/benefits/culture-and-events.html', tag: '', summary: 'Up to 25% off tickets at Teather Moon, Municipal Theater, cinemas, concerts, and the Healthy Experience Box.' },
         { slug: 'healthy-50-plus', title: 'Healthy +50 Active Living', href: '/benefits/healthy-50-plus.html', tag: '', summary: 'Digital literacy workshops, active aging clubs, preventive geriatrics, and group travel for members aged 50+.' }
       ]
     },
