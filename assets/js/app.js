@@ -146,7 +146,7 @@
     }
   }
 
-  /* 5. Interactive Affiliation RUT Lookup (Home & Former Members) */
+  /* 5. Interactive Affiliation Member ID Lookup (Home & Former Members) */
   function initAffiliationChecker() {
     const form = document.getElementById('hp-affiliation-form');
     if (!form) return;
@@ -158,11 +158,11 @@
       if (!input || !output) return;
       const val = input.value.trim();
       if (val.length < 5) {
-        output.textContent = 'Please enter a valid National ID / RUT (e.g., 12.345.678-9) to verify your affiliation status.';
+        output.textContent = 'Please enter a valid Member ID / SSN (e.g., HP-849201-US) to verify your affiliation status.';
         output.style.color = '#B91C1C';
         return;
       }
-      output.textContent = 'Verified: ID ' + val + ' is an ACTIVE Healthy Portal Affiliate (Segment: Workers | Tranche B | Excess Payment Balance: $48,500 available).';
+      output.textContent = 'Verified: Member ID ' + val + ' is an ACTIVE Healthy Portal Affiliate (Segment: Workers | Tier B | Excess Payment Balance: $48,500 available).';
       output.style.color = '#0D9488';
     });
   }
@@ -190,7 +190,7 @@
         const cae = ((Math.pow(1 + monthlyRate, 12) - 1) * 100 + 1.4).toFixed(2) + '%';
 
         if (monthlyOut) monthlyOut.textContent = formatUSD(payment) + ' / mo';
-        if (caeOut) caeOut.textContent = 'CAE: ' + cae;
+        if (caeOut) caeOut.textContent = 'APR: ' + cae;
         if (totalOut) totalOut.textContent = 'Total Loan Cost: ' + formatUSD(total);
       }
 
@@ -247,7 +247,7 @@
       updateIns();
     }
 
-    /* D. Savings & APV Goal Calculator */
+    /* D. Savings & VRS Goal Calculator */
     const savForm = document.getElementById('hp-sim-savings');
     if (savForm) {
       const initEl = document.getElementById('sim-sav-initial');
@@ -266,7 +266,7 @@
         const stateBonus = Math.min(monthly * 12 * 0.15, 360) * years;
 
         if (projOut) projOut.textContent = formatUSD(fv + stateBonus);
-        if (bonusOut) bonusOut.textContent = 'Includes estimated 15% APV State Bonus: ' + formatUSD(stateBonus);
+        if (bonusOut) bonusOut.textContent = 'Includes estimated 15% Federal Match Bonus: ' + formatUSD(stateBonus);
       }
 
       savForm.addEventListener('input', updateSavings);
@@ -285,16 +285,16 @@
         const income = Math.max(0, Number(incEl.value) || 680);
         const deps = Math.max(1, Number(depsEl.value) || 2);
         let perDep = 0;
-        let tranche = 'Tranche D (Exempt / Benefit Access Only)';
+        let tranche = 'Tier D (Exempt / Benefit Access Only)';
         if (income <= 586) {
           perDep = 22;
-          tranche = 'Tranche A (Maximum Statutory Allowance)';
+          tranche = 'Tier A (Maximum Statutory Allowance)';
         } else if (income <= 856) {
           perDep = 14;
-          tranche = 'Tranche B (Intermediate Statutory Allowance)';
+          tranche = 'Tier B (Intermediate Statutory Allowance)';
         } else if (income <= 1335) {
           perDep = 5;
-          tranche = 'Tranche C (Standard Statutory Allowance)';
+          tranche = 'Tier C (Standard Statutory Allowance)';
         }
         if (allowOut) allowOut.textContent = formatUSD(perDep * deps) + ' / month';
         if (trancheOut) trancheOut.textContent = tranche + ' for ' + deps + ' registered dependent(s)';

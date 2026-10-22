@@ -31,7 +31,7 @@ function renderDirectoryModal() {
     return `<div style="margin-bottom: 1.5rem;">
       <h3 style="margin: 0 0 0.6rem; color: var(--hp-navy-900); font-size: 1.05rem; border-bottom: 2px solid var(--hp-blue-100); padding-bottom: 0.35rem;">
         <a href="${escapeHtml(cat.href)}">${escapeHtml(cat.title)}</a>
-        <small style="color: var(--hp-slate-500); font-weight: 500; margin-left: 0.4rem;">(Replaces: ${escapeHtml(cat.originalTitle)})</small>
+        <small style="color: var(--hp-slate-500); font-weight: 500; margin-left: 0.4rem;">(${escapeHtml(cat.originalTitle)})</small>
       </h3>
       <div class="hp-megamenu__links">${items}</div>
     </div>`;
@@ -49,19 +49,19 @@ function renderDirectoryModal() {
       <div class="hp-modal__header">
         <div>
           <h2 id="hp-directory-title" style="margin: 0; font-size: 1.25rem;">Healthy Portal — Complete 1st &amp; 2nd Level Site Directory</h2>
-          <p style="margin: 0.2rem 0 0; font-size: 0.82rem; opacity: 0.88;">All reconstructed routes from Caja Los Andes in English</p>
+          <p style="margin: 0.2rem 0 0; font-size: 0.82rem; opacity: 0.88;">All 85 member routes and service portals</p>
         </div>
         <button type="button" id="hp-directory-close" class="hp-btn hp-btn--gold" style="padding: 0.45rem 1rem; font-size: 0.85rem;">Close ✕</button>
       </div>
       <div class="hp-modal__body">
         <div style="margin-bottom: 1.25rem;">
           <label for="hp-directory-search" style="display:block; font-weight:700; font-size:0.85rem; margin-bottom:0.35rem;">Filter pages by keyword:</label>
-          <input type="search" id="hp-directory-search" placeholder="Search e.g. Medical Leave, Social Credit, Auto Insurance, Caregivers, REDEC, APV..." style="width:100%; padding:0.7rem 1rem; border-radius:8px; border:1px solid var(--hp-slate-300); font-size:0.95rem;" />
+          <input type="search" id="hp-directory-search" placeholder="Search e.g. Medical Leave, Social Credit, Auto Insurance, Caregivers, REDEC, VRS..." style="width:100%; padding:0.7rem 1rem; border-radius:8px; border:1px solid var(--hp-slate-300); font-size:0.95rem;" />
         </div>
         <div style="margin-bottom: 1.5rem;">
           <h3 style="margin: 0 0 0.6rem; color: var(--hp-navy-900); font-size: 1.05rem;">Primary Portals &amp; Segment Hubs (1st Level)</h3>
           <div class="hp-megamenu__links">
-            <a href="/index.html" class="hp-megamenu__link hp-megamenu__link--hub" data-directory-item="true"><span>Workers Home Portal (Inicio Trabajadores)</span></a>
+            <a href="/index.html" class="hp-megamenu__link hp-megamenu__link--hub" data-directory-item="true"><span>Workers Home Portal (Active Members)</span></a>
             ${segmentLinks}
           </div>
         </div>
@@ -122,7 +122,7 @@ function renderHeader(activeSegmentId, activeCategoryId) {
     <div class="hp-container hp-topbar__inner">
       <div class="hp-topbar__left">
         <span class="hp-topbar__badge">● Live Digital Portal</span>
-        <span>Social Security &amp; Family Wellbeing Compensation Fund</span>
+        <span>Social Security &amp; Family Wellbeing Benefits Network</span>
       </div>
       <div class="hp-topbar__right">
         <a href="/help-center/branches.html" class="hp-topbar__link">📍 Branches</a>
@@ -147,7 +147,7 @@ function renderHeader(activeSegmentId, activeCategoryId) {
           </span>
         </a>
         <span class="hp-logo-divider" aria-hidden="true"></span>
-        <a href="/healthypay/index.html" class="hp-logo-partner" title="HealthyPay Digital Account (formerly Tapp)">
+        <a href="/healthypay/index.html" class="hp-logo-partner" title="HealthyPay Digital Account &amp; Card">
           <span>HealthyPay</span> Card
         </a>
       </div>
@@ -219,7 +219,7 @@ function renderFooter() {
         <div>
           <h3 class="hp-footer__heading">Portals &amp; Regulatory</h3>
           <ul class="hp-footer__list">
-            <li><a href="/former-members/index.html">Check Your Compensation Fund</a></li>
+            <li><a href="/former-members/index.html">Check Your Member Benefit Fund</a></li>
             <li><a href="/about-healthy/careers-and-suppliers.html">Suppliers Portal</a></li>
             <li><a href="/about-healthy/careers-and-suppliers.html">Check Issued Electronic Receipts</a></li>
             <li><a href="/about-healthy/careers-and-suppliers.html">Legal Terms &amp; Promotions</a></li>
@@ -236,14 +236,14 @@ function renderFooter() {
             <li><a href="/help-center/schedule-visit.html">Schedule Your Branch Visit</a></li>
             <li><a href="/help-center/virtual-branch.html">Virtual Branch 24/7</a></li>
             <li><a href="/help-center/self-service-kiosk.html">Self-Service Kiosks</a></li>
-            <li><a href="/help-center/contact-us.html">Inquiries &amp; Claims (600 362 2886)</a></li>
+            <li><a href="/help-center/contact-us.html">Inquiries &amp; Claims (1-800-555-0199)</a></li>
           </ul>
         </div>
       </div>
 
       <div class="hp-footer__legal">
-        <span>© 2026 Healthy Portal Compensation Fund. Social Security entities are supervised by the Superintendency of Social Security (www.suseso.cl).</span>
-        <span>Reconstructed via REA Evidence v2 | English Edition</span>
+        <span>© 2026 Healthy Portal Benefits Network. Member welfare programs are supervised by the National Social Welfare Board (www.nswb.org).</span>
+        <span>Healthy Portal Digital Ecosystem | US &amp; International Edition</span>
       </div>
     </div>
   </footer>`;
@@ -255,7 +255,7 @@ function renderSimulatorWidget(simulatorType) {
     <section class="hp-simulator" aria-label="Interactive Social Credit Simulator">
       <span class="hp-info-banner__tag">Interactive Calculator</span>
       <h2 style="margin: 0.25rem 0 0.4rem; color: var(--hp-navy-900);">Simulate Your Healthy Social Credit</h2>
-      <p style="margin: 0; font-size: 0.9rem; color: var(--hp-slate-600);">Calculate your fixed monthly payroll installment, Annual Equivalent Charge (CAE), and total loan cost instantly.</p>
+      <p style="margin: 0; font-size: 0.9rem; color: var(--hp-slate-600);">Calculate your fixed monthly payroll installment, Annual Percentage Rate (APR), and total loan cost instantly.</p>
       <form id="hp-sim-credit" class="hp-simulator__grid">
         <div class="hp-field">
           <label for="sim-credit-amount">Requested Amount (USD)</label>
@@ -286,7 +286,7 @@ function renderSimulatorWidget(simulatorType) {
           <div style="font-size: 0.85rem; color: var(--hp-slate-600);" id="sim-credit-total">Total Loan Cost: $4,056</div>
         </div>
         <div style="text-align: right;">
-          <div style="font-weight: 800; color: var(--hp-navy-900); margin-bottom: 0.5rem;" id="sim-credit-cae">CAE: 17.90%</div>
+          <div style="font-weight: 800; color: var(--hp-navy-900); margin-bottom: 0.5rem;" id="sim-credit-cae">APR: 17.90%</div>
           <a href="/my-portal/index.html" class="hp-btn hp-btn--primary">Apply in My Portal →</a>
         </div>
       </div>
@@ -322,7 +322,7 @@ function renderSimulatorWidget(simulatorType) {
           <div class="hp-stat-value" id="sim-leave-payout">$700</div>
           <div style="font-size: 0.85rem; color: var(--hp-slate-600);" id="sim-leave-paiddays">14 payable days (Daily rate: $50)</div>
         </div>
-        <a href="/my-portal/index.html" class="hp-btn hp-btn--primary">Track Folio in My Portal →</a>
+        <a href="/my-portal/index.html" class="hp-btn hp-btn--primary">Track Claim in My Portal →</a>
       </div>
     </section>`;
   }
@@ -365,9 +365,9 @@ function renderSimulatorWidget(simulatorType) {
 
   if (simulatorType === 'savings') {
     return `
-    <section class="hp-simulator" aria-label="Interactive Savings & APV Projector">
+    <section class="hp-simulator" aria-label="Interactive Savings & VRS Projector">
       <span class="hp-info-banner__tag">My Goals Simulator</span>
-      <h2 style="margin: 0.25rem 0 0.4rem; color: var(--hp-navy-900);">Project Your Savings &amp; APV State Bonus</h2>
+      <h2 style="margin: 0.25rem 0 0.4rem; color: var(--hp-navy-900);">Project Your Savings &amp; Federal Match Bonus</h2>
       <form id="hp-sim-savings" class="hp-simulator__grid">
         <div class="hp-field">
           <label for="sim-sav-initial">Initial Deposit (USD)</label>
@@ -391,7 +391,7 @@ function renderSimulatorWidget(simulatorType) {
         <div>
           <div style="font-size: 0.8rem; font-weight: 700; color: var(--hp-slate-500); text-transform: uppercase;">Projected Goal Balance</div>
           <div class="hp-stat-value" id="sim-sav-projected">$13,260</div>
-          <div style="font-size: 0.85rem; color: var(--hp-slate-600);" id="sim-sav-bonus">Includes estimated 15% APV State Bonus: $1,350</div>
+          <div style="font-size: 0.85rem; color: var(--hp-slate-600);" id="sim-sav-bonus">Includes estimated 15% Federal Match Bonus: $1,350</div>
         </div>
         <a href="/my-portal/index.html" class="hp-btn hp-btn--primary">Open My Goals Account →</a>
       </div>
@@ -400,8 +400,8 @@ function renderSimulatorWidget(simulatorType) {
 
   if (simulatorType === 'social-support') {
     return `
-    <section class="hp-simulator" aria-label="Family Allowance Tranche Calculator">
-      <span class="hp-info-banner__tag">Statutory Tranche Lookup</span>
+    <section class="hp-simulator" aria-label="Family Allowance Tier Calculator">
+      <span class="hp-info-banner__tag">Statutory Tier Lookup</span>
       <h2 style="margin: 0.25rem 0 0.4rem; color: var(--hp-navy-900);">Calculate Your Monthly Family Allowance</h2>
       <form id="hp-sim-social" class="hp-simulator__grid">
         <div class="hp-field">
@@ -417,7 +417,7 @@ function renderSimulatorWidget(simulatorType) {
         <div>
           <div style="font-size: 0.8rem; font-weight: 700; color: var(--hp-slate-500); text-transform: uppercase;">Monthly Family Allowance Payout</div>
           <div class="hp-stat-value" id="sim-soc-allowance">$28 / month</div>
-          <div style="font-size: 0.85rem; color: var(--hp-slate-600);" id="sim-soc-tranche">Tranche B (Intermediate Statutory Allowance) for 2 registered dependent(s)</div>
+          <div style="font-size: 0.85rem; color: var(--hp-slate-600);" id="sim-soc-tranche">Tier B (Intermediate Statutory Allowance) for 2 registered dependent(s)</div>
         </div>
         <a href="/social-support/family-dependents.html" class="hp-btn hp-btn--primary">Register Dependents →</a>
       </div>
@@ -476,7 +476,7 @@ function generateHomePage() {
             <span class="hp-hero__kicker">October Prevention &amp; Wellness</span>
             <h1 class="hp-hero__title">IF HEALTH IS THE GOAL, WE ARE WITH YOU!</h1>
             <p class="hp-hero__subtitle">
-              Enjoy <strong>$0 Preventive Medical Screenings</strong> at HealthyNet, Interclínica, and SAI Health + up to 35% off outdoor running events and sports clubs across the country.
+              Enjoy <strong>$0 Preventive Medical Screenings</strong> at HealthyNet, Clinic Dubal, and SAI Health + up to 35% off outdoor running events and sports clubs across the country.
             </p>
             <div class="hp-hero__ctas">
               <a href="/benefits/index.html" class="hp-btn hp-btn--gold">Discover Monthly Benefits →</a>
@@ -488,7 +488,7 @@ function generateHomePage() {
               <span class="hp-info-banner__tag">Member Health Pass</span>
               <h2 style="margin: 0.35rem 0 0.5rem; font-size: 1.35rem; color: var(--hp-navy-900);">$0 Preventive Checkups + Pharmacy Savings</h2>
               <p style="margin: 0 0 1rem; font-size: 0.9rem; color: var(--hp-slate-600);">
-                Present your National ID (RUT) at partner clinics and Cruz Verde pharmacies to activate your instant member coverage.
+                Present your Member ID at partner clinics and Pharmacy Red Wall locations to activate your instant member coverage.
               </p>
               <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; font-size: 0.85rem; font-weight: 700; color: var(--hp-blue-600);">
                 <div>✓ $0 Mammography &amp; Lab Panel</div>
@@ -529,7 +529,7 @@ function generateHomePage() {
             <span class="hp-hero__kicker">Culture &amp; Panoramas</span>
             <h1 class="hp-hero__title">YOUR NEXT CULTURAL OUTING HAS UP TO 25% OFF!</h1>
             <p class="hp-hero__subtitle">
-              Choose your favorite play at Teather Moon or the Municipal Theater of Santiago, or book a Low Season stay at our 24 nature resorts.
+              Choose your favorite play at Teather Moon or the Starlight Grand Theater in New York, or book a Low Season stay at our 24 nature resorts.
             </p>
             <div class="hp-hero__ctas">
               <a href="/benefits/culture-and-events.html" class="hp-btn hp-btn--gold">Explore Culture &amp; Tickets →</a>
@@ -541,9 +541,9 @@ function generateHomePage() {
               <span class="hp-info-banner__tag">Tourism &amp; Panoramas</span>
               <h2 style="margin: 0.35rem 0 0.5rem; font-size: 1.35rem; color: var(--hp-navy-900);">Hotels, Cabins &amp; Experience Boxes</h2>
               <p style="margin: 0 0 1rem; font-size: 0.9rem; color: var(--hp-slate-600);">
-                Up to 35% off low-season bookings with flexible payment in up to 12 interest-free installments.
+                Up to 35% off low-season bookings at Lake Tahoe, Aspen, Sedona, and Santa Barbara with up to 12 interest-free installments.
               </p>
-              <a href="/tourism/index.html" class="hp-card__link">Explore all 24 destinations →</a>
+              <a href="/tourism/index.html" class="hp-card__link">Explore all 24 US destinations →</a>
             </div>
           </div>
         </div>
@@ -587,7 +587,7 @@ function generateHomePage() {
           <span class="hp-quick-card__icon" aria-hidden="true">💳</span>
           <div>
             <div class="hp-quick-card__title">Pay Your Loan</div>
-            <div class="hp-quick-card__sub">Online RUT Payment &amp; PAC</div>
+            <div class="hp-quick-card__sub">Online ID Payment &amp; Autopay</div>
           </div>
         </a>
         <a href="/help-center/schedule-visit.html" class="hp-quick-card">
@@ -632,9 +632,9 @@ function generateHomePage() {
 
         <article class="hp-info-banner">
           <div>
-            <span class="hp-info-banner__tag">Law 21.680</span>
+            <span class="hp-info-banner__tag">Fair Credit Act</span>
             <h3>Consolidated Debt Registry (REDEC)</h3>
-            <p>Learn how the new Consolidated Debt Registry protects your financial data and helps you access fairer credit terms.</p>
+            <p>Learn how the Consolidated Debt Registry protects your financial data and helps you access fairer credit terms.</p>
           </div>
           <a href="/credits/redec.html" class="hp-btn hp-btn--outline" style="align-self: flex-start;">More Information →</a>
         </article>
@@ -642,7 +642,7 @@ function generateHomePage() {
     </div>
   </section>
 
-  <!-- 4. Featured Highlights (Los más destacados) -->
+  <!-- 4. Featured Highlights -->
   <section class="hp-section hp-section--alt">
     <div class="hp-container">
       <div class="hp-section__header">
@@ -673,7 +673,7 @@ function generateHomePage() {
           </div>
           <div class="hp-card__body">
             <h3 class="hp-card__title">Low Season Tourism Escapes</h3>
-            <p class="hp-card__desc">Plan your next family getaway at our hotels and cabin resorts across Chile with preferential low-season rates.</p>
+            <p class="hp-card__desc">Plan your next family getaway at our hotels and cabin resorts across the United States with preferential low-season rates.</p>
             <a href="/tourism/low-season-offers.html" class="hp-card__link">Get Your Benefit →</a>
           </div>
         </article>
@@ -720,11 +720,11 @@ function generateHomePage() {
           <span class="hp-info-banner__tag">Instant Affiliation Lookup</span>
           <h3 style="margin: 0.4rem 0 0.5rem; font-size: 1.35rem; color: var(--hp-navy-900);">Check If You Are Affiliated with Healthy Portal</h3>
           <p style="margin: 0 0 1rem; font-size: 0.92rem; color: var(--hp-slate-600);">
-            Enter your National ID / RUT to verify your active worker or retiree membership, family allowance tranche, and available excess payment refunds.
+            Enter your Member ID / SSN to verify your active worker or retiree membership, family allowance tier, and available excess payment refunds.
           </p>
           <form id="hp-affiliation-form" style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom: 1rem;">
-            <label for="hp-rut-input" class="hp-skip-link">Enter your RUT or National ID</label>
-            <input type="text" id="hp-rut-input" placeholder="Enter RUT / ID (e.g. 15.842.910-K)" style="flex:1; min-width:220px; padding:0.75rem 1rem; border-radius:999px; border:1px solid var(--hp-slate-300); font-size:0.95rem;" />
+            <label for="hp-rut-input" class="hp-skip-link">Enter your Member ID or SSN</label>
+            <input type="text" id="hp-rut-input" placeholder="Enter Member ID (e.g. HP-849201-US)" style="flex:1; min-width:220px; padding:0.75rem 1rem; border-radius:999px; border:1px solid var(--hp-slate-300); font-size:0.95rem;" />
             <button type="submit" class="hp-btn hp-btn--primary">Check Status →</button>
           </form>
           <p id="hp-affiliation-result" style="font-size: 0.88rem; font-weight: 700; margin: 0 0 1.25rem; min-height: 1.3rem;"></p>
@@ -745,14 +745,14 @@ function generateHomePage() {
 
         <div class="hp-healthypay-banner">
           <div>
-            <span class="hp-megamenu__promo-tag">HealthyPay Digital Card (Rebranded Tapp)</span>
+            <span class="hp-megamenu__promo-tag">HealthyPay Digital Card</span>
             <h3 style="font-size: 1.65rem; margin: 0.4rem 0 0.75rem;">Your Zero-Fee Digital Account Connected to All Your Benefits</h3>
             <p style="font-size: 0.95rem; opacity: 0.92; margin: 0 0 1.25rem;">
               Receive your Medical Leave subsidies, Family Allowances, and Excess Payment refunds faster. Shop online and internationally with your virtual and physical Mastercard with $0 maintenance fee.
             </p>
             <ul style="padding-left: 1.2rem; margin: 0 0 1.5rem; font-size: 0.9rem; opacity: 0.92;">
               <li>Free transfers between all banks</li>
-              <li>Cashback at pharmacies, supermarkets, and gas</li>
+              <li>Cashback at Pharmacy Red Wall, supermarkets, and home energy</li>
               <li>Instant card lock &amp; PIN control in the app</li>
             </ul>
           </div>
@@ -765,7 +765,7 @@ function generateHomePage() {
     </div>
   </section>
 
-  <!-- 6. Digital Channels (Ahorra tiempo prefiriendo nuestros canales digitales) -->
+  <!-- 6. Digital Channels -->
   <section class="hp-section hp-section--alt">
     <div class="hp-container">
       <div class="hp-section__header">
@@ -779,8 +779,8 @@ function generateHomePage() {
         <article class="hp-card">
           <div class="hp-card__body">
             <span class="hp-info-banner__tag">iOS &amp; Android</span>
-            <h3 class="hp-card__title">📱 More Healthy App (App Más Caja)</h3>
-            <p class="hp-card__desc">Simulate and request Social Credits, upload medical leave documents, and activate pharmacy and cinema discount codes on your phone.</p>
+            <h3 class="hp-card__title">📱 More Healthy Mobile App</h3>
+            <p class="hp-card__desc">Simulate and request Social Credits, upload medical leave documents, and activate Pharmacy Red Wall and cinema discount codes on your phone.</p>
             <a href="/help-center/mobile-app.html" class="hp-card__link">Download the App →</a>
           </div>
         </article>
@@ -788,7 +788,7 @@ function generateHomePage() {
         <article class="hp-card">
           <div class="hp-card__body">
             <span class="hp-info-banner__tag">24/7 Web Access</span>
-            <h3 class="hp-card__title">💻 Virtual Branch (Sucursal Virtual)</h3>
+            <h3 class="hp-card__title">💻 Online Virtual Branch</h3>
             <p class="hp-card__desc">Access My Portal from your computer or tablet to download affiliation certificates, update bank details, and pay installments.</p>
             <a href="/help-center/virtual-branch.html" class="hp-card__link">Go to Virtual Branch →</a>
           </div>
@@ -796,9 +796,9 @@ function generateHomePage() {
 
         <article class="hp-card">
           <div class="hp-card__body">
-            <span class="hp-info-banner__tag">Express Express Terminals</span>
-            <h3 class="hp-card__title">🖥️ Self-Service Kiosk (Tótem Autoservicio)</h3>
-            <p class="hp-card__desc">Print certificates, check medical leave payment dates, and redeem vouchers in under 60 seconds with your fingerprint.</p>
+            <span class="hp-info-banner__tag">Express Terminals</span>
+            <h3 class="hp-card__title">🖥️ Self-Service Express Kiosk</h3>
+            <p class="hp-card__desc">Print certificates, check medical leave payment dates, and redeem vouchers in under 60 seconds with biometric verification.</p>
             <a href="/help-center/self-service-kiosk.html" class="hp-card__link">Discover Kiosk Services →</a>
           </div>
         </article>
@@ -820,7 +820,7 @@ function generateHomePage() {
         <article class="hp-support-card">
           <div class="hp-support-card__icon" aria-hidden="true">📍</div>
           <h3 style="margin: 0 0 0.4rem; color: var(--hp-navy-900);">Branches</h3>
-          <p style="margin: 0 0 1.25rem; font-size: 0.88rem; color: var(--hp-slate-600); flex: 1;">Check the live operating status, addresses, and service hours of our nationwide branches.</p>
+          <p style="margin: 0 0 1.25rem; font-size: 0.88rem; color: var(--hp-slate-600); flex: 1;">Check the live operating status, addresses, and service hours of our nationwide US branches.</p>
           <a href="/help-center/branches.html" class="hp-btn hp-btn--outline" style="width: 100%;">Go to Branches</a>
         </article>
 
@@ -857,7 +857,7 @@ function generateHomePage() {
           <div class="hp-card__body">
             <span class="hp-info-banner__tag">Environmental Action</span>
             <h3 class="hp-card__title">We Joined a Family Run to Drive Native Reforestation</h3>
-            <p class="hp-card__desc">We participated in a family sports day uniting outdoor wellness with native tree planting across southern parks.</p>
+            <p class="hp-card__desc">We participated in a family sports day uniting outdoor wellness with native tree planting across national parks.</p>
             <a href="/about-healthy/sustainability.html" class="hp-card__link">Read Story →</a>
           </div>
         </article>
@@ -894,7 +894,7 @@ function generateHomePage() {
 
   const html = wrapDocument({
     title: 'Home | Workers',
-    description: 'Healthy Portal (English reconstruction of Caja Los Andes): Medical Leave, Social Credits, Insurance, Savings, Tourism, Benefits, and Social Support.',
+    description: 'Healthy Portal: Medical Leave, Social Credits, Insurance, Savings, Tourism, Benefits, and Social Support.',
     activeSegmentId: 'workers',
     activeCategoryId: null,
     bodyContent
@@ -986,13 +986,13 @@ function generateCategoryAndSubpages() {
               ${escapeHtml(sub.title)} — Step-by-Step Guide &amp; Requirements
             </h2>
             <p style="color: var(--hp-slate-700); margin: 0 0 1.25rem;">
-              ${escapeHtml(sub.summary)} Through Healthy Portal’s digital ecosystem (My Portal, More Healthy App, and HealthyPay), you can complete this process online with real-time notifications and full SUSESO regulatory transparency.
+              ${escapeHtml(sub.summary)} Through Healthy Portal’s digital ecosystem (My Portal, More Healthy App, and HealthyPay), you can complete this process online with real-time notifications and full National Social Welfare Board (NSWB) regulatory transparency.
             </p>
 
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
               <div style="background: var(--hp-blue-50); padding: 1.15rem; border-radius: var(--hp-radius-md); border-left: 4px solid var(--hp-blue-600);">
                 <h3 style="margin: 0 0 0.35rem; font-size: 1rem; color: var(--hp-navy-900);">1. Before You Start</h3>
-                <p style="margin: 0; font-size: 0.86rem; color: var(--hp-slate-600);">Verify your active National ID (RUT), updated contact email, and registered bank or HealthyPay account in My Portal.</p>
+                <p style="margin: 0; font-size: 0.86rem; color: var(--hp-slate-600);">Verify your active Member ID, updated contact email, and registered bank or HealthyPay account in My Portal.</p>
               </div>
               <div style="background: var(--hp-blue-50); padding: 1.15rem; border-radius: var(--hp-radius-md); border-left: 4px solid var(--hp-teal-600);">
                 <h3 style="margin: 0 0 0.35rem; font-size: 1rem; color: var(--hp-navy-900);">2. Digital Processing</h3>
@@ -1007,7 +1007,7 @@ function generateCategoryAndSubpages() {
             <div style="display: flex; gap: 0.85rem; flex-wrap: wrap;">
               <a href="/my-portal/index.html" class="hp-btn hp-btn--primary">Start Online in My Portal →</a>
               <a href="/help-center/schedule-visit.html" class="hp-btn hp-btn--outline">Schedule Branch Appointment</a>
-              <a href="/help-center/contact-us.html" class="hp-btn hp-btn--outline">Ask a Specialist (600 362 2886)</a>
+              <a href="/help-center/contact-us.html" class="hp-btn hp-btn--outline">Ask a Specialist (1-800-555-0199)</a>
             </div>
           </section>
 
@@ -1050,11 +1050,11 @@ function generateStandaloneSegmentPages() {
         <p style="margin: 0 0 1rem; font-size: 0.9rem; color: var(--hp-slate-600);">Access your personal dashboard for Workers, Retirees, and Company Administrators.</p>
         <form id="hp-affiliation-form" class="hp-simulator__grid">
           <div class="hp-field">
-            <label for="hp-rut-input">National ID / RUT</label>
-            <input type="text" id="hp-rut-input" placeholder="12.345.678-9" value="15.842.910-K" />
+            <label for="hp-rut-input">Member ID / SSN</label>
+            <input type="text" id="hp-rut-input" placeholder="HP-849201-US" value="HP-849201-US" />
           </div>
           <div class="hp-field">
-            <label for="hp-pass-input">Portal Password or ClaveÚnica</label>
+            <label for="hp-pass-input">Portal Password or HealthyPass SSO</label>
             <input type="password" id="hp-pass-input" value="••••••••••••" />
           </div>
           <div style="display:flex; align-items:flex-end;">
@@ -1069,8 +1069,8 @@ function generateStandaloneSegmentPages() {
         <span class="hp-info-banner__tag">Former Member Balance &amp; Refund Lookup</span>
         <h2 style="margin: 0.35rem 0 0.5rem; color: var(--hp-navy-900);">Check Excess Payment Balances &amp; Active Credits</h2>
         <form id="hp-affiliation-form" style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:0.75rem;">
-          <label for="hp-rut-input" class="hp-skip-link">National ID / RUT</label>
-          <input type="text" id="hp-rut-input" placeholder="Enter your RUT / ID" style="flex:1; min-width:220px; padding:0.7rem 1rem; border-radius:8px; border:1px solid var(--hp-slate-300);" />
+          <label for="hp-rut-input" class="hp-skip-link">Member ID / SSN</label>
+          <input type="text" id="hp-rut-input" placeholder="Enter your Member ID (e.g. HP-849201-US)" style="flex:1; min-width:220px; padding:0.7rem 1rem; border-radius:8px; border:1px solid var(--hp-slate-300);" />
           <button type="submit" class="hp-btn hp-btn--primary">Check Balances →</button>
         </form>
         <p id="hp-affiliation-result" style="font-weight: 700; margin: 0.85rem 0 0; font-size: 0.9rem;"></p>
