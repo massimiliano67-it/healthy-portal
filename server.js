@@ -11,6 +11,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const geminiEngine = require('./assets/js/gemini-search-engine.js');
+const vertexDiscoveryClient = require('./assets/js/vertex-discovery-client.js');
 
 const HOST = process.env.BIND_HOST || '127.0.0.1';
 const PORT = Number(process.env.PORT) || 8080;
@@ -62,18 +63,28 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // Case 1: Gemini Enterprise Grounded Search API (Spanish PDF Corpus + 85 Portal Pages)
+  // Case 1: Live Gemini Enterprise Grounded Search API (Discovery Engine + 768-D Vector Search + Gemini 3 Flash)
   if (pathname === '/api/gemini-search') {
     const rawQuery = searchParams ? (searchParams.get('q') || '') : '';
-    const result = geminiEngine.searchCorpus(rawQuery);
-    const body = JSON.stringify(result);
-    setSecurityHeaders(res, 'application/json; charset=utf-8');
-    res.writeHead(200);
-    if (req.method === 'HEAD') {
-      res.end();
-      return;
-    }
-    res.end(body);
+    vertexDiscoveryClient
+      .executeLiveGeminiEnterpriseSearch(rawQuery)
+      .then((result) => {
+        const body = JSON.stringify(result);
+        setSecurityHeaders(res, 'application/json; charset=utf-8');
+        res.writeHead(200);
+        if (req.method === 'HEAD') {
+          res.end();
+          return;
+        }
+        res.end(body);
+      })
+      .catch(() => {
+        const fallback = geminiEngine.searchCorpus(rawQuery);
+        const body = JSON.stringify(fallback);
+        setSecurityHeaders(res, 'application/json; charset=utf-8');
+        res.writeHead(200);
+        res.end(body);
+      });
     return;
   }
 

@@ -553,7 +553,11 @@
         badgeSpan.textContent = '[' + String(cit.index || 1) + '] ' + String(cit.docCode || 'PDF-ES');
 
         const pageSpan = document.createElement('span');
-        pageSpan.textContent = 'PÁG. ' + String(cit.pageNumber || 1);
+        const simText =
+          typeof cit.vectorSimilarity === 'number'
+            ? ' • Vec Sim ' + (cit.vectorSimilarity * 100).toFixed(1) + '%'
+            : '';
+        pageSpan.textContent = 'PÁG. ' + String(cit.pageNumber || 1) + simText;
 
         metaDiv.appendChild(badgeSpan);
         metaDiv.appendChild(pageSpan);
@@ -639,8 +643,10 @@
     function executeSearch(queryText) {
       const q = String(queryText || '').trim();
       if (window.HP_GEMINI_ENGINE && typeof window.HP_GEMINI_ENGINE.searchCorpus === 'function') {
-        // Renderizamos de inmediato con el motor local y sincronizamos con el endpoint de Gemini Enterprise
         const instantResult = window.HP_GEMINI_ENGINE.searchCorpus(q);
+        instantResult.engine =
+          '⚡ Consultando Discovery Engine (healthy-portal-spanish-ds) + Vertex AI Vector Search (768-D) + gemini-3-flash-preview...';
+        instantResult.confidenceScore = 'Sincronizando con Google Cloud Vertex AI...';
         renderGeminiResult(instantResult);
       }
 
@@ -655,7 +661,7 @@
           }
         })
         .catch(function () {
-          // El motor local ya mostró el resultado con grounding
+          // Si no hay conexión de red, se mantiene la vista previa local
         });
     }
 
