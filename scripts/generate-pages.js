@@ -6,6 +6,7 @@
 const fs = require('fs');
 const path = require('path');
 const data = require('../assets/js/portal-data.js');
+const spanishCorpus = require('../assets/js/spanish-docs-corpus.js');
 
 const ROOT_DIR = path.resolve(__dirname, '..');
 
@@ -16,6 +17,80 @@ function escapeHtml(str) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
+}
+
+function renderGeminiEnterpriseSection(isCompact) {
+  const promptChips = spanishCorpus.demoPrompts.map((p) => {
+    return `<button type="button" class="hp-gemini-chip" data-gemini-prompt="${escapeHtml(p.query)}">${escapeHtml(p.label)}</button>`;
+  }).join('\n');
+
+  const pdfCards = spanishCorpus.documents.map((doc) => {
+    return `<article class="hp-gemini-pdf-card">
+      <div>
+        <span class="hp-gemini-pdf-card__code">📄 PDF EN ESPAÑOL • ${escapeHtml(doc.code)} (${escapeHtml(String(doc.pagesCount))} PÁGS.)</span>
+        <h3 class="hp-gemini-pdf-card__title">${escapeHtml(doc.shortTitle)}</h3>
+        <p class="hp-gemini-pdf-card__desc">${escapeHtml(doc.summary)}</p>
+      </div>
+      <div style="display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center;">
+        <a href="${escapeHtml(doc.pdfUrl)}" target="_blank" rel="noopener noreferrer" class="hp-btn hp-btn--gold" style="padding:0.42rem 0.85rem; font-size:0.76rem;">Abrir PDF Oficial ↗</a>
+        <a href="${escapeHtml(doc.pdfUrl)}" download class="hp-btn hp-btn--outline-white" style="padding:0.42rem 0.85rem; font-size:0.76rem;">⬇ Descargar</a>
+      </div>
+    </article>`;
+  }).join('\n');
+
+  return `
+  <section class="hp-section" id="hp-gemini-enterprise-section" style="padding-top: ${isCompact ? '1rem' : '0.75rem'}; padding-bottom: 1.25rem;" aria-label="Buscador Generativo Gemini Enterprise en Español">
+    <div class="hp-container">
+      <div class="hp-gemini-hub">
+        <div class="hp-gemini-hub__header">
+          <div>
+            <span class="hp-gemini-badge">✨ GEMINI ENTERPRISE • BUSCADOR GENERATIVO OMNICANAL (CASO 1 — ESPAÑOL)</span>
+            <h2 class="hp-gemini-hub__title">Consulta Reglamentos NSWB/MRB, Contratos REDEC, Pólizas y Beneficios en Español</h2>
+            <p class="hp-gemini-hub__subtitle">
+              Motor de búsqueda generativa conectado a los <strong>4 documentos PDF oficiales en español</strong> y a las <strong>85 páginas de Healthy Portal</strong> con respuestas sintetizadas y citas verificables (artículo y página exacta).
+            </p>
+          </div>
+          <div style="font-family: var(--hp-font-mono); font-size: 0.72rem; color: rgba(240,241,250,0.75); text-align: right;">
+            <div>GCP Project: <strong>gemini-enterprise-demo-485114</strong></div>
+            <div>Corpus: <strong>4 PDFs Oficiales (ES) + 85 Rutas Web</strong></div>
+          </div>
+        </div>
+
+        <form id="hp-gemini-search-form" class="hp-gemini-searchbar" role="search">
+          <span aria-hidden="true" style="font-size: 1.15rem;">🔎</span>
+          <label for="hp-gemini-search-input" class="hp-skip-link">Pregunta en español a Gemini Enterprise</label>
+          <input
+            type="search"
+            id="hp-gemini-search-input"
+            class="hp-gemini-searchbar__input"
+            placeholder="Pregunta en español: ej. ¿Cómo apelar una licencia rechazada ante MRB y NSWB? ¿Qué cubre REDEC? ¿Deducible $0 en HealthyNet?"
+            value="¿Cómo apelar una licencia médica rechazada ante MRB y NSWB y cómo se calcula el subsidio?"
+          />
+          <button type="submit" class="hp-btn hp-btn--gold" style="padding: 0.62rem 1.25rem; font-size: 0.84rem; flex-shrink: 0;">
+            ✨ Buscar con Gemini →
+          </button>
+        </form>
+
+        <div class="hp-gemini-chips" aria-label="Consultas de demostración en español">
+          <span style="font-size: 0.75rem; font-weight: 700; color: var(--color-green); text-transform: uppercase; letter-spacing: 0.06em; margin-right: 0.25rem;">Preguntas frecuentes (Demo ES):</span>
+          ${promptChips}
+        </div>
+
+        <div id="hp-gemini-results" aria-live="polite"></div>
+
+        ${!isCompact ? `
+        <div style="margin-top: 1.6rem; padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,0.12);">
+          <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.5rem;">
+            <h3 style="margin:0; font-size:1rem; color:var(--hp-white);">📚 Biblioteca Oficial de Documentos PDF en Español (Fuente de Grounding para Gemini Enterprise)</h3>
+            <span style="font-family:var(--hp-font-mono); font-size:0.72rem; color:var(--color-green);">100% Verificable • PDF-1.4 Nativo</span>
+          </div>
+          <div class="hp-gemini-pdf-grid">
+            ${pdfCards}
+          </div>
+        </div>` : ''}
+      </div>
+    </div>
+  </section>`;
 }
 
 function renderDirectoryModal() {
@@ -169,6 +244,9 @@ function renderHeader(activeSegmentId, activeCategoryId) {
         ${navItems}
       </nav>
       <div class="hp-menubar__actions">
+        <button type="button" class="hp-btn-gemini-nav" data-open-gemini-search="true">
+          <span>✨ Gemini Search (ES)</span>
+        </button>
         <button type="button" class="hp-btn-directory" data-open-directory="true">
           <span>🗺️ All Pages (85)</span>
         </button>
@@ -433,7 +511,7 @@ function wrapDocument({ title, description, activeSegmentId, activeCategoryId, b
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; script-src 'self';" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'self'; frame-src 'self'; script-src 'self';" />
   <title>${escapeHtml(title)} | Healthy Portal</title>
   <meta name="description" content="${escapeHtml(description)}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -448,6 +526,9 @@ function wrapDocument({ title, description, activeSegmentId, activeCategoryId, b
   </main>
   ${renderDirectoryModal()}
   ${renderFooter()}
+  <script src="/assets/js/portal-data.js"></script>
+  <script src="/assets/js/spanish-docs-corpus.js"></script>
+  <script src="/assets/js/gemini-search-engine.js"></script>
   <script src="/assets/js/app.js"></script>
 </body>
 </html>`;
@@ -607,6 +688,9 @@ function generateHomePage() {
       </div>
     </div>
   </section>
+
+  <!-- 2.5 Case 1: Gemini Enterprise Omnichannel Generative Search & Spanish Regulatory PDFs -->
+  ${renderGeminiEnterpriseSection(false)}
 
   <!-- 3. Financial Transparency & Excess Payment Strip -->
   <section class="hp-section" style="padding-top: 0.5rem;">
@@ -980,6 +1064,10 @@ function generateCategoryAndSubpages() {
         <div>
           ${renderSimulatorWidget(cat.simulatorType)}
 
+          <div style="margin-bottom: 2rem;">
+            ${renderGeminiEnterpriseSection(true)}
+          </div>
+
           <section style="background: var(--hp-white); border: 1px solid var(--hp-slate-200); border-radius: var(--hp-radius-lg); padding: 2rem; margin-bottom: 2rem; box-shadow: var(--hp-shadow-sm);">
             <span class="hp-info-banner__tag">Everything You Need to Know</span>
             <h2 style="margin: 0.35rem 0 0.75rem; color: var(--hp-navy-900);">
@@ -1121,6 +1209,7 @@ function generateStandaloneSegmentPages() {
       <div class="hp-container">
         ${portalWidget}
         ${formerWidget}
+        ${renderGeminiEnterpriseSection(false)}
 
         <div style="background: var(--hp-white); border: 1px solid var(--hp-slate-200); border-radius: var(--hp-radius-lg); padding: 2rem; margin-bottom: 2.5rem; box-shadow: var(--hp-shadow-sm);">
           <span class="hp-info-banner__tag">Dedicated Solutions</span>

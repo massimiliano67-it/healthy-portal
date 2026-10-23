@@ -6,7 +6,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "generate": "node scripts/generate-pages.js"
+    "generate": "node scripts/generate-pdfs.js && node scripts/generate-pages.js"
   },
   "engines": {
     "node": ">=20.0.0"

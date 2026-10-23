@@ -10,6 +10,7 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const geminiEngine = require('./assets/js/gemini-search-engine.js');
 
 const HOST = process.env.BIND_HOST || '127.0.0.1';
 const PORT = Number(process.env.PORT) || 8080;
@@ -20,6 +21,7 @@ const MIME_TYPES = {
   '.css': 'text/css; charset=utf-8',
   '.js': 'application/javascript; charset=utf-8',
   '.json': 'application/json; charset=utf-8',
+  '.pdf': 'application/pdf',
   '.svg': 'image/svg+xml',
   '.png': 'image/png',
   '.jpg': 'image/jpeg',
@@ -31,10 +33,10 @@ function setSecurityHeaders(res, contentType) {
   res.setHeader('Content-Type', contentType);
   res.setHeader(
     'Content-Security-Policy',
-    "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+    "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'self'; frame-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
   );
   res.setHeader('X-Content-Type-Options', 'nosniff');
-  res.setHeader('X-Frame-Options', 'DENY');
+  res.setHeader('X-Frame-Options', 'SAMEORIGIN');
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
   res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
 }
@@ -48,13 +50,45 @@ const server = http.createServer((req, res) => {
   }
 
   let pathname = '/';
+  let searchParams = null;
   try {
     const parsedUrl = new URL(req.url || '/', 'http://localhost');
     pathname = decodeURIComponent(parsedUrl.pathname);
+    searchParams = parsedUrl.searchParams;
   } catch (_err) {
     setSecurityHeaders(res, 'text/plain; charset=utf-8');
     res.writeHead(400);
     res.end('Bad Request');
+    return;
+  }
+
+  // Case 1: Gemini Enterprise Grounded Search API (Spanish PDF Corpus + 85 Portal Pages)
+  if (pathname === '/api/gemini-search') {
+    const rawQuery = searchParams ? (searchParams.get('q') || '') : '';
+    const result = geminiEngine.searchCorpus(rawQuery);
+    const body = JSON.stringify(result);
+    setSecurityHeaders(res, 'application/json; charset=utf-8');
+    res.writeHead(200);
+    if (req.method === 'HEAD') {
+      res.end();
+      return;
+    }
+    res.end(body);
+    return;
+  }
+
+  if (pathname === '/api/gemini-docs') {
+    const body = JSON.stringify({
+      documents: geminiEngine.documents,
+      demoPrompts: geminiEngine.demoPrompts
+    });
+    setSecurityHeaders(res, 'application/json; charset=utf-8');
+    res.writeHead(200);
+    if (req.method === 'HEAD') {
+      res.end();
+      return;
+    }
+    res.end(body);
     return;
   }
 

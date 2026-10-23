@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; script-src 'self';" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'self'; frame-src 'self'; script-src 'self';" />
   <title>HealthyPay Digital Account &amp; Card | Healthy Portal</title>
   <meta name="description" content="Open your HealthyPay account in minutes with your Member ID card, receive medical leave and family allowance payouts faster, and shop worldwide with zero fees." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -494,6 +494,9 @@
     </div>
       </nav>
       <div class="hp-menubar__actions">
+        <button type="button" class="hp-btn-gemini-nav" data-open-gemini-search="true">
+          <span>✨ Gemini Search (ES)</span>
+        </button>
         <button type="button" class="hp-btn-directory" data-open-directory="true">
           <span>🗺️ All Pages (85)</span>
         </button>
@@ -538,6 +541,105 @@
       <div class="hp-container">
         
         
+        
+  <section class="hp-section" id="hp-gemini-enterprise-section" style="padding-top: 0.75rem; padding-bottom: 1.25rem;" aria-label="Buscador Generativo Gemini Enterprise en Español">
+    <div class="hp-container">
+      <div class="hp-gemini-hub">
+        <div class="hp-gemini-hub__header">
+          <div>
+            <span class="hp-gemini-badge">✨ GEMINI ENTERPRISE • BUSCADOR GENERATIVO OMNICANAL (CASO 1 — ESPAÑOL)</span>
+            <h2 class="hp-gemini-hub__title">Consulta Reglamentos NSWB/MRB, Contratos REDEC, Pólizas y Beneficios en Español</h2>
+            <p class="hp-gemini-hub__subtitle">
+              Motor de búsqueda generativa conectado a los <strong>4 documentos PDF oficiales en español</strong> y a las <strong>85 páginas de Healthy Portal</strong> con respuestas sintetizadas y citas verificables (artículo y página exacta).
+            </p>
+          </div>
+          <div style="font-family: var(--hp-font-mono); font-size: 0.72rem; color: rgba(240,241,250,0.75); text-align: right;">
+            <div>GCP Project: <strong>gemini-enterprise-demo-485114</strong></div>
+            <div>Corpus: <strong>4 PDFs Oficiales (ES) + 85 Rutas Web</strong></div>
+          </div>
+        </div>
+
+        <form id="hp-gemini-search-form" class="hp-gemini-searchbar" role="search">
+          <span aria-hidden="true" style="font-size: 1.15rem;">🔎</span>
+          <label for="hp-gemini-search-input" class="hp-skip-link">Pregunta en español a Gemini Enterprise</label>
+          <input
+            type="search"
+            id="hp-gemini-search-input"
+            class="hp-gemini-searchbar__input"
+            placeholder="Pregunta en español: ej. ¿Cómo apelar una licencia rechazada ante MRB y NSWB? ¿Qué cubre REDEC? ¿Deducible $0 en HealthyNet?"
+            value="¿Cómo apelar una licencia médica rechazada ante MRB y NSWB y cómo se calcula el subsidio?"
+          />
+          <button type="submit" class="hp-btn hp-btn--gold" style="padding: 0.62rem 1.25rem; font-size: 0.84rem; flex-shrink: 0;">
+            ✨ Buscar con Gemini →
+          </button>
+        </form>
+
+        <div class="hp-gemini-chips" aria-label="Consultas de demostración en español">
+          <span style="font-size: 0.75rem; font-weight: 700; color: var(--color-green); text-transform: uppercase; letter-spacing: 0.06em; margin-right: 0.25rem;">Preguntas frecuentes (Demo ES):</span>
+          <button type="button" class="hp-gemini-chip" data-gemini-prompt="¿Cómo apelar una licencia médica rechazada ante MRB y NSWB y cómo se calcula el subsidio?">🩺 Apelación Licencia Médica (MRB / NSWB)</button>
+<button type="button" class="hp-gemini-chip" data-gemini-prompt="¿Qué cubre el contrato REDEC, cómo funciona la portabilidad y cómo pido devolución de pagos en exceso?">🏛️ Contrato REDEC y Pagos en Exceso</button>
+<button type="button" class="hp-gemini-chip" data-gemini-prompt="¿Cómo funciona el copago $0 en HealthyNet, Clinic Dubal, SAI Health y el 40% en Pharmacy Red Wall?">💊 Copago $0 HealthyNet y Pharmacy Red Wall</button>
+<button type="button" class="hp-gemini-chip" data-gemini-prompt="¿Qué descuentos hay en Lake Tahoe, Aspen, Teather Moon y cómo postular a las becas SER?">🏔️ Turismo (Lake Tahoe / Aspen), SER y Teather Moon</button>
+        </div>
+
+        <div id="hp-gemini-results" aria-live="polite"></div>
+
+        
+        <div style="margin-top: 1.6rem; padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,0.12);">
+          <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.5rem;">
+            <h3 style="margin:0; font-size:1rem; color:var(--hp-white);">📚 Biblioteca Oficial de Documentos PDF en Español (Fuente de Grounding para Gemini Enterprise)</h3>
+            <span style="font-family:var(--hp-font-mono); font-size:0.72rem; color:var(--color-green);">100% Verificable • PDF-1.4 Nativo</span>
+          </div>
+          <div class="hp-gemini-pdf-grid">
+            <article class="hp-gemini-pdf-card">
+      <div>
+        <span class="hp-gemini-pdf-card__code">📄 PDF EN ESPAÑOL • NSWB-MRB-REG-2026-V4 (3 PÁGS.)</span>
+        <h3 class="hp-gemini-pdf-card__title">Reglamento NSWB / MRB Licencias Médicas 2026</h3>
+        <p class="hp-gemini-pdf-card__desc">Normativa integral en español sobre tramitación de Licencias Médicas Electrónicas (EML), plazos de presentación, carencia legal de 3 días, cálculo del subsidio por incapacidad laboral y procedimiento de apelación ante rechazo o reducción por parte de MRB y NSWB.</p>
+      </div>
+      <div style="display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center;">
+        <a href="/assets/docs/reglamento-nswb-mrb-licencias-medicas-2026.pdf" target="_blank" rel="noopener noreferrer" class="hp-btn hp-btn--gold" style="padding:0.42rem 0.85rem; font-size:0.76rem;">Abrir PDF Oficial ↗</a>
+        <a href="/assets/docs/reglamento-nswb-mrb-licencias-medicas-2026.pdf" download class="hp-btn hp-btn--outline-white" style="padding:0.42rem 0.85rem; font-size:0.76rem;">⬇ Descargar</a>
+      </div>
+    </article>
+<article class="hp-gemini-pdf-card">
+      <div>
+        <span class="hp-gemini-pdf-card__code">📄 PDF EN ESPAÑOL • REDEC-CRED-2026-V2 (3 PÁGS.)</span>
+        <h3 class="hp-gemini-pdf-card__title">Contrato REDEC y Crédito Social 2026</h3>
+        <p class="hp-gemini-pdf-card__desc">Condiciones contractuales en español sobre tasas APR preferenciales de Crédito Social, derechos bajo el Registro de Deuda Consolidada (REDEC), Portabilidad Financiera sin penalidad de prepago para jubilados y devolución automática de Pagos en Exceso (Saldos a Favor).</p>
+      </div>
+      <div style="display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center;">
+        <a href="/assets/docs/contrato-redec-portabilidad-credito-social-2026.pdf" target="_blank" rel="noopener noreferrer" class="hp-btn hp-btn--gold" style="padding:0.42rem 0.85rem; font-size:0.76rem;">Abrir PDF Oficial ↗</a>
+        <a href="/assets/docs/contrato-redec-portabilidad-credito-social-2026.pdf" download class="hp-btn hp-btn--outline-white" style="padding:0.42rem 0.85rem; font-size:0.76rem;">⬇ Descargar</a>
+      </div>
+    </article>
+<article class="hp-gemini-pdf-card">
+      <div>
+        <span class="hp-gemini-pdf-card__code">📄 PDF EN ESPAÑOL • POL-INS-HEALTH-2026-V3 (3 PÁGS.)</span>
+        <h3 class="hp-gemini-pdf-card__title">Pólizas de Seguros y Convenios de Salud 2026</h3>
+        <p class="hp-gemini-pdf-card__desc">Pólizas y coberturas en español para Seguro de Salud Catastrófico, Seguro Automotriz Full Coverage, Seguro de Hogar Inteligente y convenios de copago $0 en HealthyNet, Clinic Dubal, SAI Health y hasta 40% de descuento en Pharmacy Red Wall.</p>
+      </div>
+      <div style="display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center;">
+        <a href="/assets/docs/condiciones-polizas-seguros-red-salud-2026.pdf" target="_blank" rel="noopener noreferrer" class="hp-btn hp-btn--gold" style="padding:0.42rem 0.85rem; font-size:0.76rem;">Abrir PDF Oficial ↗</a>
+        <a href="/assets/docs/condiciones-polizas-seguros-red-salud-2026.pdf" download class="hp-btn hp-btn--outline-white" style="padding:0.42rem 0.85rem; font-size:0.76rem;">⬇ Descargar</a>
+      </div>
+    </article>
+<article class="hp-gemini-pdf-card">
+      <div>
+        <span class="hp-gemini-pdf-card__code">📄 PDF EN ESPAÑOL • GUI-BEN-TUR-2026-V5 (3 PÁGS.)</span>
+        <h3 class="hp-gemini-pdf-card__title">Guía de Beneficios, Becas SER y Turismo 2026</h3>
+        <p class="hp-gemini-pdf-card__desc">Guía oficial en español sobre los 24 centros turísticos (Lake Tahoe, Aspen, Sedona, Santa Barbara, Asheville, Napa Valley, Carmel, Glacier National Park), descuentos culturales en Teather Moon y Starlight Grand Theater, Becas SER y Apoyo Social (Programa Cuidadores y Asignación Familiar).</p>
+      </div>
+      <div style="display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center;">
+        <a href="/assets/docs/guia-beneficios-turismo-apoyo-social-2026.pdf" target="_blank" rel="noopener noreferrer" class="hp-btn hp-btn--gold" style="padding:0.42rem 0.85rem; font-size:0.76rem;">Abrir PDF Oficial ↗</a>
+        <a href="/assets/docs/guia-beneficios-turismo-apoyo-social-2026.pdf" download class="hp-btn hp-btn--outline-white" style="padding:0.42rem 0.85rem; font-size:0.76rem;">⬇ Descargar</a>
+      </div>
+    </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
         <div style="background: var(--hp-white); border: 1px solid var(--hp-slate-200); border-radius: var(--hp-radius-lg); padding: 2rem; margin-bottom: 2.5rem; box-shadow: var(--hp-shadow-sm);">
           <span class="hp-info-banner__tag">Dedicated Solutions</span>
@@ -1087,6 +1189,9 @@
       </div>
     </div>
   </footer>
+  <script src="/assets/js/portal-data.js"></script>
+  <script src="/assets/js/spanish-docs-corpus.js"></script>
+  <script src="/assets/js/gemini-search-engine.js"></script>
   <script src="/assets/js/app.js"></script>
 </body>
 </html>
