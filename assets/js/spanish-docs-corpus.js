@@ -333,6 +333,265 @@
         { title: 'Caregivers Support Program', href: '/social-support/caregivers-program.html' },
         { title: 'Family Allowance & Dependents', href: '/social-support/family-allowance.html' }
       ]
+    },
+    {
+      id: 'doc-copiloto-360-sucursal-2026',
+      code: 'COP-360-CRM-2026-V2',
+      title: 'Manual Operativo del Copiloto 360° de Sucursal y Contact Center (Employee Experience en Gemini Enterprise)',
+      shortTitle: 'Manual Copiloto 360° Sucursal y Contact Center 2026',
+      category: 'Operaciones de Sucursal, CRM 360° y Experiencia de Ejecutivos',
+      authority: 'Healthy Portal Branch Operations & Omnichannel Contact Center Directorate',
+      pdfUrl: '/assets/docs/manual-operativo-sucursal-contact-center-2026.pdf',
+      updatedAt: 'Octubre 2026',
+      pagesCount: 3,
+      summary: 'Protocolo oficial en español para ejecutivos de sucursal y agentes de Contact Center utilizando el Copiloto 360° de Gemini Enterprise: consolidación en tiempo real de CRM, REDEC, licencias MRB/NSWB, saldos de pagos en exceso y motor Next-Best-Action.',
+      pages: [
+        {
+          pageNumber: 1,
+          heading: 'CAPÍTULO I: FICHA ÚNICA 360° DEL AFILIADO Y CONSOLIDACIÓN MULTI-SISTEMA EN TIEMPO REAL',
+          articles: [
+            {
+              article: 'Protocolo 1° — Unificación de Conectores Empresariales (CRM, Core REDEC, NSWB/MRB y HealthyNet)',
+              text: 'Al ingresar el ID de Afiliado en el Copiloto 360° de Sucursal o Contact Center, Gemini Enterprise consulta simultáneamente 4 conectores internos: (1) CRM de Afiliación y Tramo de Asignación Familiar (A, B, C o D), (2) Core Financiero REDEC (cupo preaprobado y margen legal disponible dentro del tope del 25% para trabajadores o 15% para pensionados), (3) Core de Licencias Médicas Electrónicas MRB/NSWB, y (4) Cuenta Individual de Pagos en Exceso.',
+              keywords: ['copiloto 360', 'sucursal', 'contact center', 'crm', 'conectores', 'ficha 360', 'ejecutivo', 'employee experience']
+            },
+            {
+              article: 'Protocolo 3° — Detección Proactiva de Saldos de Pagos en Exceso y Abono Inmediato',
+              text: 'Todo ejecutivo debe verificar en los primeros 15 segundos de atención si el afiliado registra saldo disponible de Pagos en Exceso (Excess Payments). Si existe un saldo superior a $50 USD, el Copiloto 360° activa una alerta prioritaria permitiendo transferir el 100% del monto en el acto a la cuenta bancaria del afiliado o imputarlo al prepago de cuotas de Crédito Social sin comisión.',
+              keywords: ['alerta', 'pagos en exceso', 'ejecutivo sucursal', '15 segundos', 'abono inmediato', 'prepago sin comision']
+            }
+          ]
+        },
+        {
+          pageNumber: 2,
+          heading: 'CAPÍTULO II: MOTOR NEXT-BEST-ACTION (NBA), ELEGIBILIDAD CRUZADA Y GUIONES EJECUTIVOS',
+          articles: [
+            {
+              article: 'Protocolo 6° — Reglas de Recomendación Next-Best-Action (NBA) Basadas en Perfil',
+              text: 'El motor de inteligencia de Gemini Enterprise genera hasta 3 recomendaciones personalizadas por atención: (a) para afiliados Tramo A o B con cargas escolares, priorizar postulación a Becas SER y Bono de Escolaridad; (b) para afiliados con créditos bancarios externos a tasas mayores al 22% CAE, activar simulación de Portabilidad REDEC al 14.8% CAE; (c) para pensionados, ofrecer exención del 100% de mantención en Cuenta HealthyPay y descuento del 45% en Pharmacy Red Wall.',
+              keywords: ['next best action', 'nba', 'recomendacion', 'elegibilidad cruzada', 'guion ejecutivo', 'retencion', 'pensionados']
+            },
+            {
+              article: 'Protocolo 8° — Desbloqueo Asistido de Licencias Médicas Observadas desde Sucursal',
+              text: 'Cuando el Copiloto 360° detecta una licencia médica en estado Pendiente de Antecedentes o Rechazada por MRB, el ejecutivo debe generar desde la misma pantalla el Checklist de Apelación Ley 20.585 y solicitar por conector interno las liquidaciones de sueldo faltantes al portal de RR.HH. del empleador, evitando que el afiliado deba acudir presencialmente una segunda vez.',
+              keywords: ['desbloqueo licencia', 'atencion sucursal', 'primera resolucion', 'rrhh empleador', 'checklist apelacion']
+            }
+          ]
+        },
+        {
+          pageNumber: 3,
+          heading: 'CAPÍTULO III: SLA DE RESOLUCIÓN EN PRIMER CONTACTO (FCR) Y AUDITORÍA DE CALIDAD',
+          articles: [
+            {
+              article: 'Protocolo 11° — Estándar de Tiempo Medio de Atención (AHT) y Resolución en Primer Contacto (FCR 92%)',
+              text: 'La asistencia en vivo de Gemini Enterprise reduce el Tiempo Medio de Operación (AHT) de 11 minutos a 3.2 minutos por afiliado y eleva la tasa de Resolución en Primer Contacto (First Contact Resolution - FCR) al 92.4%. Toda respuesta verbal o escrita entregada por el ejecutivo queda respaldada con el código de cita verificable del documento normativo correspondiente.',
+              keywords: ['sla', 'fcr', 'aht', 'resolucion primer contacto', 'tiempo atencion', '92.4%', 'calidad contact center']
+            },
+            {
+              article: 'Protocolo 14° — Trazabilidad, Firma Biométrica en Sucursal Móvil y Resumen Post-Atención',
+              text: 'Al finalizar la atención en cualquiera de las 64 sucursales físicas, módulos Express o Video-Sucursal, el Copiloto 360° emite automáticamente una Minuta Ejecutiva de Atención en PDF firmada digitalmente y la envía al correo del afiliado junto con los enlaces directos a los beneficios activados.',
+              keywords: ['firma biometrica', 'video sucursal', 'minuta ejecutiva', '64 sucursales', 'resumen atencion']
+            }
+          ]
+        }
+      ],
+      relatedRoutes: [
+        { title: 'Branch & Service Center Locator', href: '/help-center/branch-locator.html' },
+        { title: 'Customer Service & Contact Channels', href: '/help-center/customer-service-channels.html' },
+        { title: 'Excess Payments & Unclaimed Balances', href: '/excess-payments.html' },
+        { title: 'Social Credit Simulator', href: '/credits/social-credit.html' }
+      ]
+    },
+    {
+      id: 'doc-protocolo-apelacion-licencias-2026',
+      code: 'APEL-LM-SUSESO-2026-V3',
+      title: 'Protocolo Técnico-Jurídico de Apelación de Licencias Médicas ante MRB, NSWB y Conectores Google Workspace',
+      shortTitle: 'Protocolo Apelación Licencias MRB/NSWB + Workspace 2026',
+      category: 'Apelaciones Médicas, Jurisprudencia NSWB y Automatización Workspace',
+      authority: 'National Social Welfare Board (NSWB) & Healthy Portal Medical Legal Division',
+      pdfUrl: '/assets/docs/protocolo-apelacion-licencias-compin-suseso-2026.pdf',
+      updatedAt: 'Octubre 2026',
+      pagesCount: 3,
+      summary: 'Guía técnico-jurídica oficial en español para estructurar recursos de reposición y apelación de licencias médicas rechazadas o reducidas ante MRB y NSWB, incluyendo requisitos de informe médico Clinic Dubal y automatización documental con Google Workspace (Docs, Drive y Gmail).',
+      pages: [
+        {
+          pageNumber: 1,
+          heading: 'SECCIÓN I: TIPIFICACIÓN DE CAUSALES DE RECHAZO Y ESTÁNDAR PROBATORIO ANTE MRB Y NSWB',
+          articles: [
+            {
+              article: 'Directriz 1° — Causal A: Presentación Fuera de Plazo y Eximente de Fuerza Mayor (Art. 54 D.S. N° 3)',
+              text: 'Cuando una licencia médica es rechazada por presentación extemporánea (pasados los 2 días hábiles en sector privado o 3 días en sector público), el recurso de apelación ante MRB y NSWB es admisible si se acredita Fuerza Mayor o Caso Fortuito: hospitalización de urgencia, impedimento físico agudo, caída certificada del operador de licencia electrónica (I-Med / Medipass) o retención imputable exclusivamente al empleador.',
+              keywords: ['causal a', 'fuera de plazo', 'extemporanea', 'fuerza mayor', 'caso fortuito', 'art 54 ds 3', 'apelacion licencia']
+            },
+            {
+              article: 'Directriz 3° — Causal B: Reposo Médico Injustificado o Prolongado y Peritaje en Clinic Dubal',
+              text: 'Ante el rechazo o reducción de días por la causal de Reposo Injustificado, el afiliado debe acompañar un Informe Médico Complementario emitido por su médico tratante en Clinic Dubal o red HealthyNet, detallando: código CIE-10 exacto, evolución funcional, exámenes imagenológicos o de laboratorio (RMN, TAC, perfil bioquímico), esquema terapéutico activo y fecha estimada de reintegro laboral seguro.',
+              keywords: ['causal b', 'reposo injustificado', 'reduccion de dias', 'informe medico complementario', 'cie-10', 'clinic dubal', 'examenes']
+            }
+          ]
+        },
+        {
+          pageNumber: 2,
+          heading: 'SECCIÓN II: CAUSAL PREVISIONAL, VÍNCULO LABORAL Y RECALCULO DE BASE DE SUBSIDIO',
+          articles: [
+            {
+              article: 'Directriz 6° — Causal C: Observación de Vínculo Laboral o Lagunas de Cotización Previsional',
+              text: 'Si la licencia es observada por falta de registro de los 90 días de cotizaciones (o 30 días en contratos temporales), el Centro de Apelación Inteligente verifica automáticamente el contrato de trabajo vigente, anexos firmados, certificado de cotizaciones previsionales pagadas o declaradas y comprobantes de pago de remuneraciones de los últimos 3 meses calendario anteriores al inicio del reposo.',
+              keywords: ['causal c', 'vinculo laboral', 'cotizaciones', '90 dias', 'liquidaciones', 'contrato trabajo', 'recalculo subsidio']
+            },
+            {
+              article: 'Directriz 8° — Jurisprudencia Obligatoria NSWB sobre Pago Retroactivo en 5 Días Hábiles',
+              text: 'Acogido el recurso de reposición por MRB o el dictamen de apelación por NSWB (Ley N° 20.585), Healthy Portal reliquida el 100% del subsidio devengado sin aplicar descuentos administrativos y ejecuta la transferencia electrónica directa a la cuenta del trabajador dentro del plazo máximo improrrogable de 5 días hábiles bancarios.',
+              keywords: ['jurisprudencia nswb', 'ley 20585', 'pago retroactivo', '5 dias habiles', 'reliquidacion', 'transferencia directa']
+            }
+          ]
+        },
+        {
+          pageNumber: 3,
+          heading: 'SECCIÓN III: FLUJO AUTOMATIZADO CON CONECTORES GOOGLE WORKSPACE (DOCS, DRIVE, GMAIL)',
+          articles: [
+            {
+              article: 'Directriz 11° — Generación Automática del Escrito de Apelación en Google Docs y Expediente Drive',
+              text: 'El Centro de Apelación Inteligente de Gemini Enterprise utiliza conectores nativos de Google Workspace con delegación segura (OAuth 2.0): (1) redacta el escrito jurídico-clínico formal en una plantilla oficial de Google Docs con citas normativas exactas, (2) compila y etiqueta los anexos clínicos (epicrisis Clinic Dubal y liquidaciones) en una carpeta segura de Google Drive, y (3) prepara el borrador de notificación oficial en Gmail listo para envío a MRB/NSWB.',
+              keywords: ['google workspace', 'google docs', 'google drive', 'gmail', 'conectores workspace', 'escrito apelacion', 'automatizacion']
+            }
+          ]
+        }
+      ],
+      relatedRoutes: [
+        { title: 'Medical Leave Status & Calculator', href: '/medical-leaves/index.html' },
+        { title: 'Documents Required for Medical Leaves', href: '/medical-leaves/required-documents.html' },
+        { title: 'Subsidy Payment Calculation Rules', href: '/medical-leaves/subsidy-calculation.html' },
+        { title: 'Appeal & Claims Filing Portal', href: '/help-center/complaints-and-claims.html' }
+      ]
+    },
+    {
+      id: 'doc-anexo-portabilidad-comparador-2026',
+      code: 'PORT-21236-POL-2026-V4',
+      title: 'Anexo Técnico de Portabilidad Financiera Ley 21.236 y Matriz Comparativa de Pólizas de Salud y Seguros 2026',
+      shortTitle: 'Anexo Portabilidad Ley 21.236 y Comparador Pólizas 2026',
+      category: 'Portabilidad Financiera, Subrogación REDEC y Comparativa de Seguros',
+      authority: 'Healthy Portal Financial Portability & Actuarial Insurance Unit',
+      pdfUrl: '/assets/docs/anexo-tecnico-portabilidad-financiera-comparador-polizas-2026.pdf',
+      updatedAt: 'Octubre 2026',
+      pagesCount: 3,
+      summary: 'Especificación técnica y actuarial en español para comparar créditos externos bajo la Ley N° 21.236 de Portabilidad Financiera frente a Crédito Social Healthy Portal, y matriz comparativa cláusula por cláusula de seguros de Salud, Auto, Vida y Hogar.',
+      pages: [
+        {
+          pageNumber: 1,
+          heading: 'ANEXO I: REGLAS DE COMPARACIÓN DE PORTABILIDAD FINANCIERA LEY N° 21.236 Y SUBROGACIÓN',
+          articles: [
+            {
+              article: 'Regla Técnica 1° — Metodología de Comparación de CAE, Cuota Mensual y Costo Total del Crédito',
+              text: 'El Asesor de Portabilidad Financiera de Gemini Enterprise compara cualquier oferta o deuda bancaria vigente (tarjetas rotativas, créditos de consumo o automotrices con CAE promedio de mercado entre 23.5% y 34.8%) contra la tasa preferencial de Crédito Social Healthy Portal (14.8% CAE anual para trabajadores activos y 13.2% CAE anual para pensionados). La subrogación especial Ley 21.236 extingue las garantías del banco de origen sin cobro de gastos notariales adicionales.',
+              keywords: ['portabilidad financiera', 'ley 21236', 'comparador creditos', 'cae 14.8%', 'cae 13.2%', 'subrogacion', 'ahorro mensual']
+            },
+            {
+              article: 'Regla Técnica 3° — Verificación Automática del Tope de Descuento por Planilla (25% / 15%)',
+              text: 'Toda propuesta de portabilidad emitida por el comparador incluye el Certificado de Holgura Previsional REDEC, garantizando que la nueva cuota consolidada no supere el 25% de la remuneración líquida mensual del trabajador ni el 15% de la pensión líquida del jubilado, liberando liquidez inmediata en el presupuesto familiar.',
+              keywords: ['holgura previsional', 'tope 25%', 'tope 15%', 'liquidez familiar', 'certificado portabilidad']
+            }
+          ]
+        },
+        {
+          pageNumber: 2,
+          heading: 'ANEXO II: MATRIZ COMPARATIVA CLÁUSULA POR CLÁUSULA DE PÓLIZAS DE SEGUROS',
+          articles: [
+            {
+              article: 'Regla Técnica 5° — Comparativa de Seguro Catastrófico y Oncológico vs. Aseguradoras Comerciales',
+              text: 'A diferencia de las pólizas comerciales individuales que exigen deducibles anuales de 15 a 30 UF y carencias de 90 días, el Seguro de Salud Catastrófico y Oncológico de Healthy Portal ofrece: Deducible $0 USD en hospitalizaciones dentro de Clinic Dubal y Red HealthyNet, cobertura máxima de 5,000 UF anuales, carencia reducida a 30 días (0 días por accidente) y reembolso del 80% al 100% sobre copago Fonasa/Isapre.',
+              keywords: ['comparador seguros', 'seguro catastrofico', 'oncologico', '5000 uf', 'deducible 0', 'carencia 30 dias', 'clinic dubal']
+            },
+            {
+              article: 'Regla Técnica 7° — Comparativa de Seguro Automotriz Full Protection y Hogar Protegido',
+              text: 'El Seguro Automotriz Full Protection de Healthy Portal ($34 USD base mensual) incluye Deducible Inteligente $0 en talleres oficiales de la red, auto de reemplazo hasta por 30 días sin límite de kilometraje y cobertura de responsabilidad civil de 1,500 UF, superando el estándar bancario externo que aplica deducibles fijos de 5 a 10 UF y topes de 10 días de vehículo de reemplazo.',
+              keywords: ['seguro automotriz', 'full protection', 'auto reemplazo 30 dias', '1500 uf', 'hogar protegido', 'deducible inteligente']
+            }
+          ]
+        },
+        {
+          pageNumber: 3,
+          heading: 'ANEXO III: EXCLUSIONES EXPRESAS, BONIFICACIÓN I-MED Y TRANSPARENCIA CONTRACTUAL',
+          articles: [
+            {
+              article: 'Regla Técnica 10° — Auditoría Transparente de Exclusiones y Preexistencias Declaradas',
+              text: 'El motor de Grounding Documental de Gemini Enterprise destaca de forma explícita las exclusiones de cada póliza antes de la contratación digital: procedimientos meramente estéticos no reconstructivos, deportes aéreos extremos no federados y patologías hospitalarias diagnosticadas dentro de los 12 meses previos no declaradas en la DPS (Declaración Personal de Salud). Las enfermedades crónicas ambulatorias (hipertensión, diabetes tipo 2, dislipidemia) SÍ están cubiertas al 100% en el convenio de descuento de Pharmacy Red Wall (hasta 40% y 45%).',
+              keywords: ['exclusiones', 'preexistencias', 'dps', 'declaracion personal de salud', 'enfermedades cronicas', 'pharmacy red wall']
+            }
+          ]
+        }
+      ],
+      relatedRoutes: [
+        { title: 'Credit Simulator & Portability', href: '/credits/index.html' },
+        { title: 'Financial Consolidation Credit', href: '/credits/financial-consolidation.html' },
+        { title: 'Insurance Hub & Quote Simulator', href: '/insurance/index.html' },
+        { title: 'Health & Catastrophic Insurance', href: '/insurance/health-and-catastrophic.html' },
+        { title: 'Auto Insurance Full Protection', href: '/insurance/auto-insurance.html' }
+      ]
+    },
+    {
+      id: 'doc-informe-b2b-esg-solvencia-2026',
+      code: 'B2B-ESG-BASILEA-2026-V1',
+      title: 'Reporte Integrado B2B de Bienestar Corporativo, Ausentismo Laboral, Solvencia Basilea III y Bonos Sociales ESG 2026',
+      shortTitle: 'Reporte B2B Empresas, Solvencia Basilea III y ESG 2026',
+      category: 'Inteligencia B2B Empresas, Inversionistas, Riesgo AA+ y Sostenibilidad ESG',
+      authority: 'Healthy Portal Corporate B2B Division & Institutional Investor Relations',
+      pdfUrl: '/assets/docs/informe-sostenibilidad-finanzas-sociales-esg-b2b-2026.pdf',
+      updatedAt: 'Octubre 2026',
+      pagesCount: 3,
+      summary: 'Reporte oficial en español para Directores de RR.HH. de empresas afiliadas e Inversionistas Institucionales: benchmarking de ausentismo laboral, ROI de salud preventiva en terreno, indicadores de solvencia Basilea III, clasificación AA+ y trazabilidad de Bonos Sociales ESG.',
+      pages: [
+        {
+          pageNumber: 1,
+          heading: 'PARTE I: INTELIGENCIA B2B PARA EMPRESAS AFILIADAS, RR.HH. Y REDUCCIÓN DE AUSENTISMO',
+          articles: [
+            {
+              article: 'Indicador B2B 1° — Benchmarking de Ausentismo Laboral y Retorno de Salud Preventiva (ROI 3.4x)',
+              text: 'Las empresas afiliadas que implementan el Plan Anual de Salud Preventiva en Terreno de Healthy Portal (operativos móviles de pesquisa cardiovascular, oftalmológica y salud mental en el lugar de trabajo junto a Clinic Dubal) registran una reducción promedio del 24.6% en los días de ausentismo por licencias médicas curativas en un horizonte de 12 meses, generando un retorno social y productivo estimado de 3.4x por cada dólar invertido en bienestar.',
+              keywords: ['b2b', 'empresas', 'rrhh', 'ausentismo laboral', 'salud preventiva', 'operativos moviles', 'roi 3.4x', 'productividad']
+            },
+            {
+              article: 'Indicador B2B 3° — Optimización de Uso de Beneficios por Tramo Salarial y Retención de Talento',
+              text: 'El Hub B2B de Gemini Enterprise analiza de forma agregada y anonimizada la nómina de la empresa afiliada para maximizar la adopción de beneficios libres de costo para el empleador: Asignación Familiar electrónica, convenios dentales y ópticos ($0 copago preventivo), Becas SER para hijos de trabajadores y educación financiera contra el sobreendeudamiento.',
+              keywords: ['retencion talento', 'nomina empresa', 'adopcion beneficios', 'educacion financiera', 'bienestar corporativo']
+            }
+          ]
+        },
+        {
+          pageNumber: 2,
+          heading: 'PARTE II: SOLVENCIA PATRIMONIAL BASILEA III, CLASIFICACIÓN DE RIESGO AA+ Y CARTERA SOCIAL',
+          articles: [
+            {
+              article: 'Indicador Financiero 5° — Clasificación de Riesgo AA+ (Perspectiva Estable) y Ratio Basilea III',
+              text: 'Al cierre del tercer trimestre de 2026, Healthy Portal mantiene una clasificación de solvencia institucional AA+ con Perspectiva Estable otorgada por las principales agencias clasificadoras de riesgo. El Índice de Adecuación de Capital (IAC estándar Basilea III) alcanza el 18.4% (superando ampliamente el mínimo regulatorio del 10.5%), con un Ratio de Cobertura de Liquidez (LCR) de 164% y cobertura de provisiones de 2.35 veces la cartera deteriorada.',
+              keywords: ['inversionistas', 'clasificacion aa+', 'basilea iii', 'solvencia', 'adecuacion de capital', '18.4%', 'liquidez lcr']
+            },
+            {
+              article: 'Indicador Financiero 7° — Calidad de Cartera de Crédito Social y Tasa de Morosidad (1.82%)',
+              text: 'La cartera colocada de Crédito Social asciende a $1,420 millones USD distribuida en 485,000 operaciones activas con un ticket promedio de $2,920 USD. Gracias al mecanismo de recaudación preferente por planilla (Payroll Deduction Code REDEC) y al tope estricto de endeudamiento del 25%/15%, la morosidad mayor a 90 días se sitúa en apenas 1.82%, el nivel más bajo de la industria financiera social.',
+              keywords: ['morosidad 1.82%', 'cartera credito social', '1420 millones', 'recaudacion planilla', 'riesgo crediticio', 'estados financieros']
+            }
+          ]
+        },
+        {
+          pageNumber: 3,
+          heading: 'PARTE III: MARCO DE BONOS SOCIALES Y SOSTENIBLES (ESG ICMA) E IMPACTO AUDITADO',
+          articles: [
+            {
+              article: 'Indicador ESG 10° — Trazabilidad y Asignación de Emisiones de Bonos Sociales ESG',
+              text: 'El 100% de los fondos recaudados mediante la serie de Bonos Sociales y Sostenibles de Healthy Portal (certificados bajo los Social Bond Principles de ICMA y verificados por auditor externo independiente) se destina a tres carteras de impacto social medible: (1) 52% a Créditos Sociales para trabajadores Tramos A y B y microempresas lideradas por mujeres, (2) 31% a financiamiento preferencial para Adultos Mayores y Pensionados, y (3) 17% a infraestructura clínica regional y telemedicina gratuita.',
+              keywords: ['bonos sociales', 'esg', 'icma', 'sostenibilidad', 'impacto social', 'adulto mayor', 'mujeres', 'inversion responsable']
+            }
+          ]
+        }
+      ],
+      relatedRoutes: [
+        { title: 'Employer Portal & Payroll Services', href: '/companies/index.html' },
+        { title: 'Investor Relations & Risk Ratings', href: '/investors/index.html' },
+        { title: 'Financial Statements & Solvency Reports', href: '/investors/financial-statements.html' },
+        { title: 'ESG Bond Framework & Social Impact', href: '/investors/esg-and-social-bonds.html' },
+        { title: 'Sustainability Strategy & Social Value', href: '/sustainability/index.html' }
+      ]
     }
   ];
 

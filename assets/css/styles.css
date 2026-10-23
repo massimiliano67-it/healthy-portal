@@ -2242,6 +2242,299 @@ ol {
   line-height: 1.45;
 }
 
+/* ==========================================================================
+   Gemini Enterprise Suite — 5-Case Interactive Tabs & Workbenches
+   ========================================================================== */
+.hp-gemini-tabs {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin-bottom: 1.35rem;
+}
+
+.hp-gemini-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 0.75rem 0.95rem;
+  border-radius: var(--hp-radius-md);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1.5px solid rgba(255, 255, 255, 0.14);
+  color: rgba(240, 241, 250, 0.85);
+  font-family: var(--hp-font-sans);
+  font-size: 0.81rem;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+  transition: var(--hp-transition);
+}
+
+.hp-gemini-tab:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(193, 255, 0, 0.55);
+  color: var(--hp-white);
+  transform: translateY(-2px);
+}
+
+.hp-gemini-tab.is-active {
+  background: linear-gradient(135deg, rgba(26, 47, 251, 0.88) 0%, rgba(99, 40, 255, 0.88) 100%);
+  border-color: var(--color-green);
+  color: var(--hp-white);
+  box-shadow: 0 10px 28px rgba(26, 47, 251, 0.42);
+}
+
+.hp-gemini-tab__num {
+  font-family: var(--hp-font-mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-green);
+  text-transform: uppercase;
+}
+
+.hp-gemini-panel {
+  display: none;
+}
+
+.hp-gemini-panel.is-active {
+  display: block;
+}
+
+.hp-suite-workbench {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--hp-radius-lg);
+  padding: 1.35rem 1.5rem;
+}
+
+.hp-suite-workbench__intro {
+  margin-bottom: 1.1rem;
+}
+
+.hp-suite-kicker {
+  display: inline-block;
+  font-family: var(--hp-font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--color-green);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+.hp-suite-workbench__title {
+  margin: 0 0 0.35rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--hp-white);
+}
+
+.hp-suite-workbench__desc {
+  margin: 0;
+  font-size: 0.86rem;
+  color: rgba(240, 241, 250, 0.8);
+  line-height: 1.5;
+}
+
+.hp-suite-controls {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  background: rgba(9, 11, 18, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--hp-radius-md);
+  padding: 1rem 1.15rem;
+  margin-bottom: 1.15rem;
+}
+
+.hp-suite-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.hp-suite-field label {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: rgba(240, 241, 250, 0.88);
+}
+
+.hp-suite-select,
+.hp-suite-input {
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--hp-slate-900);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--hp-radius-sm);
+  padding: 0.62rem 0.85rem;
+  font-family: var(--hp-font-sans);
+  font-size: 0.86rem;
+  font-weight: 600;
+  outline: none;
+}
+
+.hp-suite-select:focus,
+.hp-suite-input:focus {
+  border-color: var(--color-green);
+  box-shadow: 0 0 0 3px rgba(193, 255, 0, 0.25);
+}
+
+.hp-suite-submit {
+  padding: 0.68rem 1.35rem;
+  font-size: 0.82rem;
+  flex-shrink: 0;
+}
+
+.hp-suite-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 0.85rem;
+  margin-bottom: 1.15rem;
+}
+
+.hp-suite-kpi-card {
+  background: var(--color-off-white);
+  border: 1px solid var(--hp-slate-200);
+  border-top: 3px solid var(--color-blue);
+  border-radius: var(--hp-radius-sm);
+  padding: 0.9rem 1rem;
+}
+
+.hp-suite-kpi-card__label {
+  font-family: var(--hp-font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--hp-slate-600);
+  margin-bottom: 0.25rem;
+}
+
+.hp-suite-kpi-card__value {
+  font-size: 1.18rem;
+  font-weight: 800;
+  color: var(--hp-slate-900);
+  margin-bottom: 0.2rem;
+}
+
+.hp-suite-kpi-card__sub {
+  font-size: 0.78rem;
+  color: var(--hp-slate-700);
+  line-height: 1.38;
+}
+
+.hp-suite-box {
+  background: var(--color-off-white);
+  border: 1px solid var(--hp-slate-200);
+  border-radius: var(--hp-radius-sm);
+  padding: 1rem 1.15rem;
+  margin-bottom: 1.1rem;
+}
+
+.hp-suite-box__title {
+  margin: 0 0 0.5rem;
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-blue);
+}
+
+.hp-suite-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  font-size: 0.86rem;
+  color: var(--hp-slate-800);
+  line-height: 1.55;
+}
+
+.hp-suite-list li {
+  margin-bottom: 0.35rem;
+}
+
+.hp-suite-pre {
+  margin: 0;
+  white-space: pre-wrap;
+  font-family: var(--hp-font-mono);
+  font-size: 0.79rem;
+  line-height: 1.52;
+  color: var(--hp-slate-900);
+  background: var(--hp-white);
+  border: 1px solid var(--hp-slate-200);
+  border-radius: 8px;
+  padding: 0.9rem 1rem;
+}
+
+.hp-workspace-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 0.8rem;
+  margin-bottom: 1.1rem;
+}
+
+.hp-workspace-card {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-left: 4px solid #16a34a;
+  border-radius: var(--hp-radius-sm);
+  padding: 0.85rem 1rem;
+}
+
+.hp-workspace-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #166534;
+  margin-bottom: 0.25rem;
+}
+
+.hp-workspace-card__detail {
+  margin: 0;
+  font-size: 0.79rem;
+  color: #14532d;
+  line-height: 1.42;
+}
+
+.hp-suite-table-wrap {
+  overflow-x: auto;
+  margin-bottom: 1.15rem;
+  border: 1px solid var(--hp-slate-200);
+  border-radius: var(--hp-radius-sm);
+}
+
+.hp-suite-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  background: var(--hp-white);
+}
+
+.hp-suite-table th {
+  background: var(--hp-slate-900);
+  color: var(--hp-white);
+  text-align: left;
+  padding: 0.7rem 0.9rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.hp-suite-table td {
+  padding: 0.7rem 0.9rem;
+  border-bottom: 1px solid var(--hp-slate-200);
+  color: var(--hp-slate-800);
+  vertical-align: top;
+}
+
+.hp-suite-table tr:last-child td {
+  border-bottom: none;
+}
+
 @media (max-width: 1120px) {
   .hp-lusion-editorial {
     grid-template-columns: 1fr;

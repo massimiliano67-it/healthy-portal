@@ -88,6 +88,31 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  // Cases 2, 3, 4 & 5: Live Gemini Enterprise Suite API (Copiloto 360°, Apelaciones + Workspace, Portabilidad/Pólizas, Hub B2B/ESG)
+  if (pathname === '/api/gemini-suite') {
+    const caseNum = searchParams ? (searchParams.get('case') || '2') : '2';
+    const scenarioKey = searchParams ? (searchParams.get('scenario') || '') : '';
+    const customInput = searchParams ? (searchParams.get('custom') || '') : '';
+    vertexDiscoveryClient
+      .executeLiveGeminiEnterpriseSuite(caseNum, scenarioKey, customInput)
+      .then((result) => {
+        const body = JSON.stringify(result);
+        setSecurityHeaders(res, 'application/json; charset=utf-8');
+        res.writeHead(200);
+        if (req.method === 'HEAD') {
+          res.end();
+          return;
+        }
+        res.end(body);
+      })
+      .catch(() => {
+        setSecurityHeaders(res, 'application/json; charset=utf-8');
+        res.writeHead(500);
+        res.end(JSON.stringify({ error: 'Suite synthesis error' }));
+      });
+    return;
+  }
+
   if (pathname === '/api/gemini-docs') {
     const body = JSON.stringify({
       documents: geminiEngine.documents,

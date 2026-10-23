@@ -15,6 +15,7 @@ const http = require('http');
 const https = require('https');
 const { execFile } = require('child_process');
 const fallbackEngine = require('./gemini-search-engine');
+const suiteCases = require('./gemini-enterprise-cases');
 
 const PROJECT_ID = process.env.GCP_PROJECT_ID || 'gemini-enterprise-demo-485114';
 const DISCOVERY_LOCATION = 'global';
@@ -443,6 +444,122 @@ async function executeLiveGeminiEnterpriseSearch(rawQuery) {
   }
 }
 
+async function executeLiveGeminiEnterpriseSuite(caseNumber, scenarioKey, customInput) {
+  const startTime = Date.now();
+  const cNum = Number(caseNumber) || 2;
+  const cleanKey = String(scenarioKey || '').trim();
+  const cleanCustom = String(customInput || '').trim().slice(0, 240);
+
+  let baseData = null;
+  if (cNum === 2) {
+    baseData = suiteCases.case2Profiles[cleanKey] || suiteCases.case2Profiles['valentina-morales'];
+  } else if (cNum === 3) {
+    baseData = suiteCases.case3Scenarios[cleanKey] || suiteCases.case3Scenarios['causal-plazo-fuerza-mayor'];
+  } else if (cNum === 4) {
+    baseData = suiteCases.case4Comparisons[cleanKey] || suiteCases.case4Comparisons['portabilidad-credito-consumo'];
+  } else if (cNum === 5) {
+    baseData = suiteCases.case5Reports[cleanKey] || suiteCases.case5Reports['b2b-rrhh-ausentismo'];
+  }
+
+  const resultCopy = JSON.parse(JSON.stringify(baseData));
+
+  try {
+    const token = await getAccessToken();
+    const url = `https://aiplatform.googleapis.com/v1/projects/${PROJECT_ID}/locations/${GEMINI_LOCATION}/publishers/google/models/${GEMINI_MODEL}:generateContent`;
+
+    const citContext = (resultCopy.citations || [])
+      .map((c, idx) => `[Cita ${idx + 1}] ${c.docShortTitle} (${c.docCode}, Pág. ${c.pageNumber}): ${c.article} — ${c.excerpt}`)
+      .join('\n');
+
+    let prompt = '';
+    if (cNum === 2) {
+      if (cleanCustom) {
+        resultCopy.memberId = cleanCustom;
+      }
+      prompt = [
+        'Eres el Copiloto 360° de Sucursal y Contact Center de Healthy Portal en Gemini Enterprise.',
+        `Afiliado en atención: ${resultCopy.fullName} (ID: ${resultCopy.memberId}, ${resultCopy.tier}, Saldo Pagos en Exceso: $${resultCopy.excessBalanceUSD} USD, Estado Licencia: ${resultCopy.medicalLeaveStatus.status}).`,
+        'Genera un JSON con {"executiveSynthesis": "Síntesis ejecutiva de 3 oraciones con citas [Cita 1], [Cita 2]...", "executiveScript": "Guion cálido y resolutivo en primera persona para el ejecutivo de sucursal..."}.',
+        'FUENTES OFICIALES:',
+        citContext
+      ].join('\n');
+    } else if (cNum === 3) {
+      if (cleanCustom) {
+        resultCopy.folio = cleanCustom;
+      }
+      prompt = [
+        'Eres el Centro de Apelación Inteligente de Licencias Médicas de Healthy Portal en Gemini Enterprise.',
+        `Caso: Folio ${resultCopy.folio}, ${resultCopy.causalTitle}, ${resultCopy.days} días de reposo en ${resultCopy.medicalCenter}, subsidio estimado $${resultCopy.subsidyAmountUSD} USD.`,
+        'Genera un JSON con {"legalAnalysis": "Dictamen de admisibilidad jurídico-clínica de 3 oraciones citando [Cita 1], [Cita 2] y Ley 20.585..."}.',
+        'FUENTES OFICIALES:',
+        citContext
+      ].join('\n');
+    } else if (cNum === 4) {
+      const customAmt = Number(cleanCustom);
+      if (customAmt && customAmt >= 500 && resultCopy.id === 'portabilidad-credito-consumo') {
+        const ratio = customAmt / 6000;
+        resultCopy.defaultAmountUSD = Math.round(customAmt);
+        resultCopy.monthlySavingsUSD = Math.max(12, Math.round(46 * ratio));
+        resultCopy.totalSavingsUSD = resultCopy.monthlySavingsUSD * 36;
+      }
+      prompt = [
+        'Eres el Asesor de Portabilidad Financiera Ley 21.236 y Comparador Actuarial de Pólizas de Healthy Portal en Gemini Enterprise.',
+        `Comparativa: ${resultCopy.title}. Ahorro mensual estimado: $${resultCopy.monthlySavingsUSD} USD ($${resultCopy.totalSavingsUSD} USD total).`,
+        'Genera un JSON con {"executiveVerdict": "Dictamen comparativo de 3 oraciones con citas [Cita 1], [Cita 2], [Cita 3] destacando ventajas de CAE, deducible $0 en Clinic Dubal y tope REDEC..."}.',
+        'FUENTES OFICIALES:',
+        citContext
+      ].join('\n');
+    } else {
+      prompt = [
+        'Eres el motor Deep Research B2B de Gemini Enterprise para Empresas Afiliadas e Inversionistas Institucionales de Healthy Portal.',
+        `Reporte: ${resultCopy.reportTitle} (${resultCopy.audience}).`,
+        'Genera un JSON con {"deepResearchSummary": "Síntesis ejecutiva Deep Research de 3 a 4 oraciones con citas [Cita 1], [Cita 2] incluyendo cifras exactas (ROI 3.4x, Basilea III 18.4%, Morosidad 1.82%, AA+ o Bonos ESG ICMA)..."}.',
+        'FUENTES OFICIALES:',
+        citContext
+      ].join('\n');
+    }
+
+    const res = await httpsPostJson(
+      url,
+      token,
+      {
+        contents: [{ role: 'user', parts: [{ text: prompt }] }],
+        generationConfig: {
+          temperature: 0.15,
+          responseMimeType: 'application/json',
+          thinkingConfig: { thinkingBudget: 0 }
+        }
+      },
+      8500
+    );
+
+    if (res.status === 200 && res.data.candidates && res.data.candidates[0]?.content?.parts) {
+      const rawText = res.data.candidates[0].content.parts.map((p) => p.text || '').join('').trim();
+      const parsed = JSON.parse(rawText);
+      if (cNum === 2) {
+        if (parsed.executiveSynthesis) resultCopy.executiveSynthesis = parsed.executiveSynthesis;
+        if (parsed.executiveScript) resultCopy.executiveScript = parsed.executiveScript;
+      } else if (cNum === 3) {
+        if (parsed.legalAnalysis) resultCopy.legalAnalysis = parsed.legalAnalysis;
+      } else if (cNum === 4) {
+        if (parsed.executiveVerdict) resultCopy.executiveVerdict = parsed.executiveVerdict;
+      } else if (cNum === 5) {
+        if (parsed.deepResearchSummary) resultCopy.deepResearchSummary = parsed.deepResearchSummary;
+      }
+      resultCopy.liveVertexAI = true;
+      resultCopy.modelVersion = res.data.modelVersion || GEMINI_MODEL;
+    }
+  } catch (_err) {
+    resultCopy.liveVertexAI = false;
+    resultCopy.modelVersion = GEMINI_MODEL + ' (Grounded Cache)';
+  }
+
+  resultCopy.latencyMs = Date.now() - startTime;
+  resultCopy.engineBadge = `Vertex AI ${resultCopy.modelVersion || GEMINI_MODEL} • Discovery Engine (${DATA_STORE_ID}) • ${resultCopy.latencyMs}ms`;
+  return resultCopy;
+}
+
 module.exports = {
-  executeLiveGeminiEnterpriseSearch
+  executeLiveGeminiEnterpriseSearch,
+  executeLiveGeminiEnterpriseSuite
 };

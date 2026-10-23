@@ -499,7 +499,7 @@
       </nav>
       <div class="hp-menubar__actions">
         <button type="button" class="hp-btn-gemini-nav" data-open-gemini-search="true">
-          <span data-lang-es="✨ Buscador Gemini" data-lang-en="✨ Gemini Search">✨ Buscador Gemini</span>
+          <span data-lang-es="✨ Gemini Suite (5 Casos)" data-lang-en="✨ Gemini Suite (5 Cases)">✨ Gemini Suite (5 Casos)</span>
         </button>
         <button type="button" class="hp-btn-directory" data-open-directory="true">
           <span data-lang-es="🗺️ Todas las Páginas (85)" data-lang-en="🗺️ All Pages (85)">🗺️ Todas las Páginas (85)</span>
@@ -565,55 +565,194 @@
       </section>
         
         
-  <section class="hp-section" id="hp-gemini-enterprise-section" style="padding-top: 0.75rem; padding-bottom: 1.25rem;" aria-label="Buscador Generativo Gemini Enterprise">
+  <section class="hp-section" id="hp-gemini-enterprise-section" style="padding-top: 0.75rem; padding-bottom: 1.25rem;" aria-label="Suite Completa Gemini Enterprise">
     <div class="hp-container">
       <div class="hp-gemini-hub">
         <div class="hp-gemini-hub__header">
           <div>
-            <span class="hp-gemini-badge"><span data-lang-es="✨ GEMINI ENTERPRISE • BUSCADOR GENERATIVO OMNICANAL (CASO 1 — ESPAÑOL)" data-lang-en="✨ GEMINI ENTERPRISE • OMNICHANNEL GENERATIVE SEARCH (CASE 1 — SPANISH CORPUS)">✨ GEMINI ENTERPRISE • BUSCADOR GENERATIVO OMNICANAL (CASO 1 — ESPAÑOL)</span></span>
-            <h2 class="hp-gemini-hub__title"><span data-lang-es="Consulta Reglamentos NSWB/MRB, Contratos REDEC, Pólizas y Beneficios en Español" data-lang-en="Search NSWB/MRB Regulations, REDEC Contracts, Insurance Policies &amp; Benefits">Consulta Reglamentos NSWB/MRB, Contratos REDEC, Pólizas y Beneficios en Español</span></h2>
+            <span class="hp-gemini-badge"><span data-lang-es="✨ GEMINI ENTERPRISE SUITE • 5 CASOS DE USO EN VIVO (VERTEX AI + DISCOVERY ENGINE + WORKSPACE)" data-lang-en="✨ GEMINI ENTERPRISE SUITE • 5 LIVE USE CASES (VERTEX AI + DISCOVERY ENGINE + WORKSPACE)">✨ GEMINI ENTERPRISE SUITE • 5 CASOS DE USO EN VIVO (VERTEX AI + DISCOVERY ENGINE + WORKSPACE)</span></span>
+            <h2 class="hp-gemini-hub__title"><span data-lang-es="Centro de Inteligencia Generativa: Buscador RAG, Copiloto 360°, Apelaciones, Portabilidad y Hub B2B" data-lang-en="Generative Intelligence Center: RAG Search, 360° Copilot, Appeals, Portability &amp; B2B Hub">Centro de Inteligencia Generativa: Buscador RAG, Copiloto 360°, Apelaciones, Portabilidad y Hub B2B</span></h2>
             <p class="hp-gemini-hub__subtitle">
-              <span data-lang-es="Motor de búsqueda generativa conectado en vivo a Discovery Engine + Vertex AI Vector Search (768-D) + Gemini 3 Flash sobre los 4 documentos PDF oficiales en español y las 85 páginas de Healthy Portal." data-lang-en="Live generative search engine powered by Discovery Engine + Vertex AI Vector Search (768-D) + Gemini 3 Flash across the 4 official Spanish PDFs and all 85 Healthy Portal pages.">Motor de búsqueda generativa conectado en vivo a Discovery Engine + Vertex AI Vector Search (768-D) + Gemini 3 Flash sobre los 4 documentos PDF oficiales en español y las 85 páginas de Healthy Portal.</span>
+              <span data-lang-es="Suite empresarial conectada en vivo a Discovery Engine (healthy-portal-spanish-ds), Vertex AI Vector Search (768-D), Conectores Google Workspace y Gemini 3 Flash sobre los 8 documentos PDF oficiales en español (24 páginas) y las 85 rutas del portal." data-lang-en="Enterprise suite connected live to Discovery Engine (healthy-portal-spanish-ds), Vertex AI Vector Search (768-D), Google Workspace Connectors, and Gemini 3 Flash across all 8 official Spanish PDFs (24 pages) and 85 portal routes.">Suite empresarial conectada en vivo a Discovery Engine (healthy-portal-spanish-ds), Vertex AI Vector Search (768-D), Conectores Google Workspace y Gemini 3 Flash sobre los 8 documentos PDF oficiales en español (24 páginas) y las 85 rutas del portal.</span>
             </p>
           </div>
           <div style="font-family: var(--hp-font-mono); font-size: 0.72rem; color: rgba(240,241,250,0.75); text-align: right;">
             <div>GCP Project: <strong>gemini-enterprise-demo-485114</strong></div>
-            <div>Corpus: <strong>4 PDFs Oficiales (ES) + 85 Rutas Web</strong></div>
+            <div>Corpus: <strong>8 PDFs Oficiales (24 Págs. ES) + 120 Vectores 768-D</strong></div>
           </div>
         </div>
 
-        <form id="hp-gemini-search-form" class="hp-gemini-searchbar" role="search">
-          <span aria-hidden="true" style="font-size: 1.15rem;">🔎</span>
-          <input
-            type="search"
-            id="hp-gemini-search-input"
-            class="hp-gemini-searchbar__input"
-            aria-label="Pregunta en español a Gemini Enterprise"
-            placeholder="Pregunta en español: ej. ¿Cómo apelar una licencia rechazada ante MRB y NSWB? ¿Qué cubre REDEC? ¿Deducible $0 en HealthyNet?"
-            data-placeholder-es="Pregunta en español: ej. ¿Cómo apelar una licencia rechazada ante MRB y NSWB? ¿Qué cubre REDEC? ¿Deducible $0 en HealthyNet?"
-            data-placeholder-en="Ask in Spanish or English: e.g. ¿Cómo apelar una licencia rechazada ante MRB y NSWB? ¿Qué cubre REDEC? ¿Deducible $0 en HealthyNet?"
-            value=""
-          />
-          <button type="submit" class="hp-btn hp-btn--gold" style="padding: 0.62rem 1.25rem; font-size: 0.84rem; flex-shrink: 0;">
-            <span data-lang-es="✨ Buscar con Gemini →" data-lang-en="✨ Search with Gemini →">✨ Buscar con Gemini →</span>
+        <!-- Selector de los 5 Casos de Uso de Gemini Enterprise -->
+        <div class="hp-gemini-tabs" role="tablist" aria-label="Casos de uso de Gemini Enterprise">
+          <button type="button" class="hp-gemini-tab is-active" role="tab" aria-selected="true" data-gemini-tab="case1">
+            <span class="hp-gemini-tab__num">CASO 1</span>
+            <span>🔎 <span data-lang-es="Buscador RAG Omnicanal" data-lang-en="Omnichannel RAG Search">Buscador RAG Omnicanal</span></span>
           </button>
-        </form>
+          <button type="button" class="hp-gemini-tab" role="tab" aria-selected="false" data-gemini-tab="case2">
+            <span class="hp-gemini-tab__num">CASO 2</span>
+            <span>🎧 <span data-lang-es="Copiloto 360° Sucursal &amp; Contact Center" data-lang-en="360° Branch &amp; Contact Center Copilot">Copiloto 360° Sucursal &amp; Contact Center</span></span>
+          </button>
+          <button type="button" class="hp-gemini-tab" role="tab" aria-selected="false" data-gemini-tab="case3">
+            <span class="hp-gemini-tab__num">CASO 3</span>
+            <span>⚖️ <span data-lang-es="Apelación Licencias + Workspace" data-lang-en="Medical Leave Appeals + Workspace">Apelación Licencias + Workspace</span></span>
+          </button>
+          <button type="button" class="hp-gemini-tab" role="tab" aria-selected="false" data-gemini-tab="case4">
+            <span class="hp-gemini-tab__num">CASO 4</span>
+            <span>📊 <span data-lang-es="Portabilidad y Comparador Pólizas" data-lang-en="Financial Portability &amp; Policy Comparator">Portabilidad y Comparador Pólizas</span></span>
+          </button>
+          <button type="button" class="hp-gemini-tab" role="tab" aria-selected="false" data-gemini-tab="case5">
+            <span class="hp-gemini-tab__num">CASO 5</span>
+            <span>🏢 <span data-lang-es="Hub B2B Empresas &amp; Inversionistas" data-lang-en="B2B Companies &amp; Investors Hub">Hub B2B Empresas &amp; Inversionistas</span></span>
+          </button>
+        </div>
 
-        <div class="hp-gemini-chips" aria-label="Consultas de demostración en español">
-          <span style="font-size: 0.75rem; font-weight: 700; color: var(--color-green); text-transform: uppercase; letter-spacing: 0.06em; margin-right: 0.25rem;"><span data-lang-es="Preguntas frecuentes (Demo ES):" data-lang-en="Sample Queries (Spanish Demo):">Preguntas frecuentes (Demo ES):</span></span>
-          <button type="button" class="hp-gemini-chip" data-gemini-prompt="¿Cómo apelar una licencia médica rechazada ante MRB y NSWB y cómo se calcula el subsidio?">🩺 Apelación Licencia Médica (MRB / NSWB)</button>
+        <!-- PANEL CASO 1: Buscador Generativo Omnicanal -->
+        <div class="hp-gemini-panel is-active" data-gemini-panel="case1" role="tabpanel">
+          <form id="hp-gemini-search-form" class="hp-gemini-searchbar" role="search">
+            <span aria-hidden="true" style="font-size: 1.15rem;">🔎</span>
+            <input
+              type="search"
+              id="hp-gemini-search-input"
+              class="hp-gemini-searchbar__input"
+              aria-label="Pregunta en español a Gemini Enterprise"
+              placeholder="Pregunta en español: ej. ¿Cómo apelar una licencia rechazada ante MRB y NSWB? ¿Qué cubre REDEC? ¿Deducible $0 en HealthyNet?"
+              data-placeholder-es="Pregunta en español: ej. ¿Cómo apelar una licencia rechazada ante MRB y NSWB? ¿Qué cubre REDEC? ¿Deducible $0 en HealthyNet?"
+              data-placeholder-en="Ask in Spanish or English: e.g. ¿Cómo apelar una licencia rechazada ante MRB y NSWB? ¿Qué cubre REDEC? ¿Deducible $0 en HealthyNet?"
+              value=""
+            />
+            <button type="submit" class="hp-btn hp-btn--gold" style="padding: 0.62rem 1.25rem; font-size: 0.84rem; flex-shrink: 0;">
+              <span data-lang-es="✨ Buscar con Gemini →" data-lang-en="✨ Search with Gemini →">✨ Buscar con Gemini →</span>
+            </button>
+          </form>
+
+          <div class="hp-gemini-chips" aria-label="Consultas de demostración en español">
+            <span style="font-size: 0.75rem; font-weight: 700; color: var(--color-green); text-transform: uppercase; letter-spacing: 0.06em; margin-right: 0.25rem;"><span data-lang-es="Preguntas frecuentes (Demo ES):" data-lang-en="Sample Queries (Spanish Demo):">Preguntas frecuentes (Demo ES):</span></span>
+            <button type="button" class="hp-gemini-chip" data-gemini-prompt="¿Cómo apelar una licencia médica rechazada ante MRB y NSWB y cómo se calcula el subsidio?">🩺 Apelación Licencia Médica (MRB / NSWB)</button>
 <button type="button" class="hp-gemini-chip" data-gemini-prompt="¿Qué cubre el contrato REDEC, cómo funciona la portabilidad y cómo pido devolución de pagos en exceso?">🏛️ Contrato REDEC y Pagos en Exceso</button>
 <button type="button" class="hp-gemini-chip" data-gemini-prompt="¿Cómo funciona el copago $0 en HealthyNet, Clinic Dubal, SAI Health y el 40% en Pharmacy Red Wall?">💊 Copago $0 HealthyNet y Pharmacy Red Wall</button>
 <button type="button" class="hp-gemini-chip" data-gemini-prompt="¿Qué descuentos hay en Lake Tahoe, Aspen, Teather Moon y cómo postular a las becas SER?">🏔️ Turismo (Lake Tahoe / Aspen), SER y Teather Moon</button>
+          </div>
+
+          <div id="hp-gemini-results" aria-live="polite"></div>
         </div>
 
-        <div id="hp-gemini-results" aria-live="polite"></div>
+        <!-- PANEL CASO 2: Copiloto 360° de Sucursal y Contact Center (Employee Experience) -->
+        <div class="hp-gemini-panel" data-gemini-panel="case2" role="tabpanel" hidden>
+          <div class="hp-suite-workbench">
+            <div class="hp-suite-workbench__intro">
+              <span class="hp-suite-kicker">🎧 EMPLOYEE EXPERIENCE • CONECTORES CRM + CORE REDEC + LICENCIAS MRB/NSWB + PAGOS EN EXCESO</span>
+              <h3 class="hp-suite-workbench__title"><span data-lang-es="Caso 2: Copiloto 360° de Sucursal y Contact Center en Gemini Enterprise" data-lang-en="Case 2: 360° Branch &amp; Contact Center Copilot in Gemini Enterprise">Caso 2: Copiloto 360° de Sucursal y Contact Center en Gemini Enterprise</span></h3>
+              <p class="hp-suite-workbench__desc"><span data-lang-es="Unifica en una sola vista la ficha previsional, saldos de Pagos en Exceso, holgura crediticia REDEC (25% / 15%), estado de licencias médicas y Next-Best-Action con guion ejecutivo fundamentado en el Manual Operativo COP-360-CRM-2026-V2." data-lang-en="Unifies member profile, Excess Payment balances, REDEC credit headroom (25% / 15%), medical leave status, and Next-Best-Action executive script grounded in Manual COP-360-CRM-2026-V2.">Unifica en una sola vista la ficha previsional, saldos de Pagos en Exceso, holgura crediticia REDEC (25% / 15%), estado de licencias médicas y Next-Best-Action con guion ejecutivo fundamentado en el Manual Operativo COP-360-CRM-2026-V2.</span></p>
+            </div>
+            <form id="hp-case2-form" class="hp-suite-controls">
+              <div class="hp-suite-field" style="flex: 2; min-width: 260px;">
+                <label for="hp-case2-scenario"><span data-lang-es="Seleccionar Afiliado en Atención (Escenario en Vivo):" data-lang-en="Select Member in Service (Live Scenario):">Seleccionar Afiliado en Atención (Escenario en Vivo):</span></label>
+                <select id="hp-case2-scenario" class="hp-suite-select">
+                  <option value="valentina-morales" selected data-lang-es="Valentina Morales (ID: HP-849201-US • Trabajadora Tramo B • Exceso $485 + Licencia Observada)" data-lang-en="Valentina Morales (ID: HP-849201-US • Worker Tier B • $485 Refund + Observed Leave)">Valentina Morales (ID: HP-849201-US • Trabajadora Tramo B • Exceso $485 + Licencia Observada)</option>
+                  <option value="roberto-sterling" data-lang-es="Roberto Sterling (ID: HP-512098-PEN • Pensionado Tramo A • Portabilidad 13.2% CAE + Cuidadores)" data-lang-en="Roberto Sterling (ID: HP-512098-PEN • Retiree Tier A • 13.2% Portability + Caregivers)">Roberto Sterling (ID: HP-512098-PEN • Pensionado Tramo A • Portabilidad 13.2% CAE + Cuidadores)</option>
+                  <option value="camila-vance" data-lang-es="Camila Vance (ID: HP-390441-TECH • Postnatal Maternal 84 Días + Bono Natalidad $120)" data-lang-en="Camila Vance (ID: HP-390441-TECH • 84-Day Maternity Leave + $120 Birth Bonus)">Camila Vance (ID: HP-390441-TECH • Postnatal Maternal 84 Días + Bono Natalidad $120)</option>
+                </select>
+              </div>
+              <div class="hp-suite-field" style="flex: 1; min-width: 190px;">
+                <label for="hp-case2-custom"><span data-lang-es="ID Afiliado / RUT (Opcional):" data-lang-en="Member ID / SSN (Optional):">ID Afiliado / RUT (Opcional):</span></label>
+                <input type="text" id="hp-case2-custom" class="hp-suite-input" placeholder="Ej. HP-849201-US" />
+              </div>
+              <button type="submit" class="hp-btn hp-btn--gold hp-suite-submit">
+                <span data-lang-es="🎧 Sintetizar Ficha 360° →" data-lang-en="🎧 Synthesize 360° Profile →">🎧 Sintetizar Ficha 360° →</span>
+              </button>
+            </form>
+            <div id="hp-case2-results" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <!-- PANEL CASO 3: Centro de Apelación Inteligente de Licencias Médicas + Conectores Workspace -->
+        <div class="hp-gemini-panel" data-gemini-panel="case3" role="tabpanel" hidden>
+          <div class="hp-suite-workbench">
+            <div class="hp-suite-workbench__intro">
+              <span class="hp-suite-kicker">⚖️ ADVOCACY AUTOMATION • LEY N° 20.585 + D.S. N° 3 + CONECTORES GOOGLE DOCS, DRIVE Y GMAIL</span>
+              <h3 class="hp-suite-workbench__title"><span data-lang-es="Caso 3: Centro de Apelación Inteligente de Licencias Médicas + Conectores Workspace" data-lang-en="Case 3: Intelligent Medical Leave Appeal Center + Workspace Connectors">Caso 3: Centro de Apelación Inteligente de Licencias Médicas + Conectores Workspace</span></h3>
+              <p class="hp-suite-workbench__desc"><span data-lang-es="Analiza la causal de rechazo o reducción de días de MRB/NSWB, verifica los antecedentes clínicos de Clinic Dubal o liquidaciones de 3 meses, redacta el Recurso de Reposición formal y compila el expediente en Google Docs, Drive y Gmail conforme al Protocolo APEL-LM-SUSESO-2026-V3." data-lang-en="Analyzes MRB/NSWB rejection or day-reduction causes, verifies Clinic Dubal clinical records or 3-month payslips, drafts the formal Appeal Brief, and compiles the dossier in Google Docs, Drive, and Gmail under Protocol APEL-LM-SUSESO-2026-V3.">Analiza la causal de rechazo o reducción de días de MRB/NSWB, verifica los antecedentes clínicos de Clinic Dubal o liquidaciones de 3 meses, redacta el Recurso de Reposición formal y compila el expediente en Google Docs, Drive y Gmail conforme al Protocolo APEL-LM-SUSESO-2026-V3.</span></p>
+            </div>
+            <form id="hp-case3-form" class="hp-suite-controls">
+              <div class="hp-suite-field" style="flex: 2; min-width: 260px;">
+                <label for="hp-case3-scenario"><span data-lang-es="Causal de Rechazo u Observación MRB / NSWB:" data-lang-en="MRB / NSWB Rejection or Observation Cause:">Causal de Rechazo u Observación MRB / NSWB:</span></label>
+                <select id="hp-case3-scenario" class="hp-suite-select">
+                  <option value="causal-plazo-fuerza-mayor" selected data-lang-es="Causal A: Presentación Fuera de Plazo — Eximente Fuerza Mayor Hospitalización Clinic Dubal (Art. 54 D.S. N° 3)" data-lang-en="Cause A: Late Submission — Force Majeure Hospitalization Exemption Clinic Dubal (Art. 54 D.S. No. 3)">Causal A: Presentación Fuera de Plazo — Eximente Fuerza Mayor Hospitalización Clinic Dubal (Art. 54 D.S. N° 3)</option>
+                  <option value="causal-reposo-clinic-dubal" data-lang-es="Causal B: Reposo Injustificado / Reducción de 21 a 7 Días — Peritaje RMN Clinic Dubal (Ley 20.585)" data-lang-en="Cause B: Unjustified Rest / Reduction from 21 to 7 Days — Clinic Dubal MRI Report (Law 20,585)">Causal B: Reposo Injustificado / Reducción de 21 a 7 Días — Peritaje RMN Clinic Dubal (Ley 20.585)</option>
+                  <option value="causal-vinculo-cotizaciones" data-lang-es="Causal C: Observación de Cotizaciones / Base de Cálculo 3 Meses (Art. 7° y 11° NSWB)" data-lang-en="Cause C: Contribution Record Observation / 3-Month Calculation Base (Art. 7 &amp; 11 NSWB)">Causal C: Observación de Cotizaciones / Base de Cálculo 3 Meses (Art. 7° y 11° NSWB)</option>
+                </select>
+              </div>
+              <div class="hp-suite-field" style="flex: 1; min-width: 190px;">
+                <label for="hp-case3-custom"><span data-lang-es="Folio Licencia (Opcional):" data-lang-en="Leave Folio (Optional):">Folio Licencia (Opcional):</span></label>
+                <input type="text" id="hp-case3-custom" class="hp-suite-input" placeholder="Ej. LM-2026-77310" />
+              </div>
+              <button type="submit" class="hp-btn hp-btn--gold hp-suite-submit">
+                <span data-lang-es="⚖️ Generar Escrito + Workspace →" data-lang-en="⚖️ Generate Appeal + Workspace →">⚖️ Generar Escrito + Workspace →</span>
+              </button>
+            </form>
+            <div id="hp-case3-results" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <!-- PANEL CASO 4: Asesor de Portabilidad Financiera y Comparador de Seguros con Grounding Documental -->
+        <div class="hp-gemini-panel" data-gemini-panel="case4" role="tabpanel" hidden>
+          <div class="hp-suite-workbench">
+            <div class="hp-suite-workbench__intro">
+              <span class="hp-suite-kicker">📊 DOCUMENT GROUNDING • LEY N° 21.236 PORTABILIDAD + MATRIZ ACTUARIAL DE PÓLIZAS</span>
+              <h3 class="hp-suite-workbench__title"><span data-lang-es="Caso 4: Asesor de Portabilidad Financiera y Comparador de Seguros con Grounding Documental" data-lang-en="Case 4: Financial Portability Advisor &amp; Insurance Comparator with Document Grounding">Caso 4: Asesor de Portabilidad Financiera y Comparador de Seguros con Grounding Documental</span></h3>
+              <p class="hp-suite-workbench__desc"><span data-lang-es="Audita cláusula por cláusula créditos de consumo bancarios externos frente al Crédito Social REDEC (14.8% CAE trabajadores / 13.2% pensionados) y compara pólizas comerciales contra los Seguros Catastrófico 5,000 UF y Automotriz Full Protection ($0 deducible en Clinic Dubal y talleres oficiales) según el Anexo PORT-21236-POL-2026-V4." data-lang-en="Audits external bank loans clause-by-clause against REDEC Social Credit (14.8% APR workers / 13.2% retirees) and compares commercial insurance policies against 5,000 UF Catastrophic Health and Full Protection Auto Insurance ($0 deductible) under Annex PORT-21236-POL-2026-V4.">Audita cláusula por cláusula créditos de consumo bancarios externos frente al Crédito Social REDEC (14.8% CAE trabajadores / 13.2% pensionados) y compara pólizas comerciales contra los Seguros Catastrófico 5,000 UF y Automotriz Full Protection ($0 deducible en Clinic Dubal y talleres oficiales) según el Anexo PORT-21236-POL-2026-V4.</span></p>
+            </div>
+            <form id="hp-case4-form" class="hp-suite-controls">
+              <div class="hp-suite-field" style="flex: 2; min-width: 260px;">
+                <label for="hp-case4-scenario"><span data-lang-es="Seleccionar Auditoría de Portabilidad o Comparativa de Pólizas:" data-lang-en="Select Portability Audit or Policy Comparison:">Seleccionar Auditoría de Portabilidad o Comparativa de Pólizas:</span></label>
+                <select id="hp-case4-scenario" class="hp-suite-select">
+                  <option value="portabilidad-credito-consumo" selected data-lang-es="Portabilidad Financiera Ley N° 21.236: Deuda Bancaria Externa (28.9% CAE) vs. Crédito Social REDEC (14.8% CAE)" data-lang-en="Financial Portability Law 21,236: External Bank Debt (28.9% APR) vs. REDEC Social Credit (14.8% APR)">Portabilidad Financiera Ley N° 21.236: Deuda Bancaria Externa (28.9% CAE) vs. Crédito Social REDEC (14.8% CAE)</option>
+                  <option value="comparador-seguro-catastrofico" data-lang-es="Comparador Salud: Póliza Comercial Externa (Deducible 20 UF) vs. Catastrófico Healthy Portal ($0 Deducible Clinic Dubal)" data-lang-en="Health Comparator: External Commercial Policy (20 UF Deductible) vs. Healthy Portal Catastrophic ($0 Deductible)">Comparador Salud: Póliza Comercial Externa (Deducible 20 UF) vs. Catastrófico Healthy Portal ($0 Deducible Clinic Dubal)</option>
+                  <option value="comparador-seguro-auto-hogar" data-lang-es="Comparador Automotriz: Seguro Bancario (8 UF Deducible) vs. Full Protection Healthy ($0 Deducible + 30 Días Auto)" data-lang-en="Auto Comparator: Bank Insurance (8 UF Deductible) vs. Healthy Full Protection ($0 Deductible + 30-Day Car)">Comparador Automotriz: Seguro Bancario (8 UF Deducible) vs. Full Protection Healthy ($0 Deducible + 30 Días Auto)</option>
+                </select>
+              </div>
+              <div class="hp-suite-field" style="flex: 1; min-width: 190px;">
+                <label for="hp-case4-custom"><span data-lang-es="Monto a Portar USD (Opcional):" data-lang-en="Portability Amount USD (Optional):">Monto a Portar USD (Opcional):</span></label>
+                <input type="number" id="hp-case4-custom" class="hp-suite-input" placeholder="Ej. 6000" min="500" max="50000" step="100" />
+              </div>
+              <button type="submit" class="hp-btn hp-btn--gold hp-suite-submit">
+                <span data-lang-es="📊 Comparar Cláusulas y Ahorro →" data-lang-en="📊 Compare Clauses &amp; Savings →">📊 Comparar Cláusulas y Ahorro →</span>
+              </button>
+            </form>
+            <div id="hp-case4-results" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <!-- PANEL CASO 5: Hub de Inteligencia B2B para Empresas e Inversionistas (Deep Research) -->
+        <div class="hp-gemini-panel" data-gemini-panel="case5" role="tabpanel" hidden>
+          <div class="hp-suite-workbench">
+            <div class="hp-suite-workbench__intro">
+              <span class="hp-suite-kicker">🏢 DEEP RESEARCH • GESTIÓN DE AUSENTISMO B2B + SOLVENCIA BASILEA III (18.4%) + BONOS SOCIALES ESG (ICMA)</span>
+              <h3 class="hp-suite-workbench__title"><span data-lang-es="Caso 5: Hub de Inteligencia B2B para Empresas e Inversionistas (Deep Research en Gemini Enterprise)" data-lang-en="Case 5: B2B Intelligence Hub for Companies &amp; Investors (Deep Research in Gemini Enterprise)">Caso 5: Hub de Inteligencia B2B para Empresas e Inversionistas (Deep Research en Gemini Enterprise)</span></h3>
+              <p class="hp-suite-workbench__desc"><span data-lang-es="Sintetiza hallazgos estratégicos multi-documento para Directores de RR.HH. de empresas afiliadas (reducción de ausentismo del 24.6% y ROI 3.4x con operativos móviles de Clinic Dubal) y para Inversionistas Institucionales (Solvencia Basilea III de 18.4%, clasificación AA+, mora 1.82% y trazabilidad de Bonos Sociales ICMA) conforme al Reporte B2B-ESG-BASILEA-2026-V1." data-lang-en="Synthesizes multi-document strategic findings for HR Directors of affiliated companies (-24.6% absenteeism &amp; 3.4x ROI with Clinic Dubal mobile clinics) and Institutional Investors (18.4% Basel III solvency, AA+ rating, 1.82% NPL &amp; ICMA Social Bonds) under Report B2B-ESG-BASILEA-2026-V1.">Sintetiza hallazgos estratégicos multi-documento para Directores de RR.HH. de empresas afiliadas (reducción de ausentismo del 24.6% y ROI 3.4x con operativos móviles de Clinic Dubal) y para Inversionistas Institucionales (Solvencia Basilea III de 18.4%, clasificación AA+, mora 1.82% y trazabilidad de Bonos Sociales ICMA) conforme al Reporte B2B-ESG-BASILEA-2026-V1.</span></p>
+            </div>
+            <form id="hp-case5-form" class="hp-suite-controls">
+              <div class="hp-suite-field" style="flex: 1; min-width: 280px;">
+                <label for="hp-case5-scenario"><span data-lang-es="Seleccionar Informe Deep Research (Empresas B2B / Inversionistas ESG):" data-lang-en="Select Deep Research Report (B2B Companies / ESG Investors):">Seleccionar Informe Deep Research (Empresas B2B / Inversionistas ESG):</span></label>
+                <select id="hp-case5-scenario" class="hp-suite-select">
+                  <option value="b2b-rrhh-ausentismo" selected data-lang-es="Empresas B2B (Directores RR.HH.): Plan de Reducción de Ausentismo (-24.6%) y ROI Preventivo 3.4x con Clinic Dubal" data-lang-en="B2B Companies (HR Directors): Absenteeism Reduction Plan (-24.6%) &amp; 3.4x Preventive ROI with Clinic Dubal">Empresas B2B (Directores RR.HH.): Plan de Reducción de Ausentismo (-24.6%) y ROI Preventivo 3.4x con Clinic Dubal</option>
+                  <option value="inversor-basilea-solvencia" data-lang-es="Inversionistas Institucionales: Solvencia Basilea III (18.4%), Clasificación AA+ Estable y Cartera REDEC (Mora 1.82%)" data-lang-en="Institutional Investors: Basel III Solvency (18.4%), AA+ Stable Rating &amp; REDEC Portfolio (1.82% NPL)">Inversionistas Institucionales: Solvencia Basilea III (18.4%), Clasificación AA+ Estable y Cartera REDEC (Mora 1.82%)</option>
+                  <option value="inversor-bonos-esg-icma" data-lang-es="Fondos Sostenibles ESG: Trazabilidad de Bonos Sociales (ICMA Social Bond Principles) e Impacto Social Auditado" data-lang-en="Sustainable ESG Funds: Social Bond Traceability (ICMA Social Bond Principles) &amp; Audited Social Impact">Fondos Sostenibles ESG: Trazabilidad de Bonos Sociales (ICMA Social Bond Principles) e Impacto Social Auditado</option>
+                </select>
+              </div>
+              <button type="submit" class="hp-btn hp-btn--gold hp-suite-submit">
+                <span data-lang-es="🏢 Ejecutar Deep Research →" data-lang-en="🏢 Execute Deep Research →">🏢 Ejecutar Deep Research →</span>
+              </button>
+            </form>
+            <div id="hp-case5-results" aria-live="polite"></div>
+          </div>
+        </div>
 
         
         <div style="margin-top: 1.6rem; padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,0.12);">
           <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.5rem;">
-            <h3 style="margin:0; font-size:1rem; color:var(--hp-white);"><span data-lang-es="📚 Biblioteca Oficial de Documentos PDF en Español (Fuente de Grounding para Gemini Enterprise)" data-lang-en="📚 Official Spanish PDF Document Library (Gemini Enterprise Grounding Source)">📚 Biblioteca Oficial de Documentos PDF en Español (Fuente de Grounding para Gemini Enterprise)</span></h3>
-            <span style="font-family:var(--hp-font-mono); font-size:0.72rem; color:var(--color-green);">100% Verificable • PDF-1.4 Nativo</span>
+            <h3 style="margin:0; font-size:1rem; color:var(--hp-white);"><span data-lang-es="📚 Biblioteca Oficial de 8 Documentos PDF en Español (Fuente de Grounding para los 5 Casos de Gemini Enterprise)" data-lang-en="📚 Official Library of 8 Spanish PDF Documents (Grounding Source for All 5 Gemini Enterprise Cases)">📚 Biblioteca Oficial de 8 Documentos PDF en Español (Fuente de Grounding para los 5 Casos de Gemini Enterprise)</span></h3>
+            <span style="font-family:var(--hp-font-mono); font-size:0.72rem; color:var(--color-green);">8 PDFs • 24 Páginas • 120 Vectores 768-D • PDF-1.4 Nativo</span>
           </div>
           <div class="hp-gemini-pdf-grid">
             <article class="hp-gemini-pdf-card">
@@ -658,6 +797,50 @@
       <div style="display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center;">
         <a href="/assets/docs/guia-beneficios-turismo-apoyo-social-2026.pdf" target="_blank" rel="noopener noreferrer" class="hp-btn hp-btn--gold" style="padding:0.42rem 0.85rem; font-size:0.76rem;"><span data-lang-es="Abrir PDF Oficial ↗" data-lang-en="Open Official PDF ↗">Abrir PDF Oficial ↗</span></a>
         <a href="/assets/docs/guia-beneficios-turismo-apoyo-social-2026.pdf" download class="hp-btn hp-btn--outline-white" style="padding:0.42rem 0.85rem; font-size:0.76rem;"><span data-lang-es="⬇ Descargar" data-lang-en="⬇ Download">⬇ Descargar</span></a>
+      </div>
+    </article>
+<article class="hp-gemini-pdf-card">
+      <div>
+        <span class="hp-gemini-pdf-card__code">📄 PDF EN ESPAÑOL • COP-360-CRM-2026-V2 (3 PÁGS.)</span>
+        <h3 class="hp-gemini-pdf-card__title">Manual Copiloto 360° Sucursal y Contact Center 2026</h3>
+        <p class="hp-gemini-pdf-card__desc">Protocolo oficial en español para ejecutivos de sucursal y agentes de Contact Center utilizando el Copiloto 360° de Gemini Enterprise: consolidación en tiempo real de CRM, REDEC, licencias MRB/NSWB, saldos de pagos en exceso y motor Next-Best-Action.</p>
+      </div>
+      <div style="display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center;">
+        <a href="/assets/docs/manual-operativo-sucursal-contact-center-2026.pdf" target="_blank" rel="noopener noreferrer" class="hp-btn hp-btn--gold" style="padding:0.42rem 0.85rem; font-size:0.76rem;"><span data-lang-es="Abrir PDF Oficial ↗" data-lang-en="Open Official PDF ↗">Abrir PDF Oficial ↗</span></a>
+        <a href="/assets/docs/manual-operativo-sucursal-contact-center-2026.pdf" download class="hp-btn hp-btn--outline-white" style="padding:0.42rem 0.85rem; font-size:0.76rem;"><span data-lang-es="⬇ Descargar" data-lang-en="⬇ Download">⬇ Descargar</span></a>
+      </div>
+    </article>
+<article class="hp-gemini-pdf-card">
+      <div>
+        <span class="hp-gemini-pdf-card__code">📄 PDF EN ESPAÑOL • APEL-LM-SUSESO-2026-V3 (3 PÁGS.)</span>
+        <h3 class="hp-gemini-pdf-card__title">Protocolo Apelación Licencias MRB/NSWB + Workspace 2026</h3>
+        <p class="hp-gemini-pdf-card__desc">Guía técnico-jurídica oficial en español para estructurar recursos de reposición y apelación de licencias médicas rechazadas o reducidas ante MRB y NSWB, incluyendo requisitos de informe médico Clinic Dubal y automatización documental con Google Workspace (Docs, Drive y Gmail).</p>
+      </div>
+      <div style="display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center;">
+        <a href="/assets/docs/protocolo-apelacion-licencias-compin-suseso-2026.pdf" target="_blank" rel="noopener noreferrer" class="hp-btn hp-btn--gold" style="padding:0.42rem 0.85rem; font-size:0.76rem;"><span data-lang-es="Abrir PDF Oficial ↗" data-lang-en="Open Official PDF ↗">Abrir PDF Oficial ↗</span></a>
+        <a href="/assets/docs/protocolo-apelacion-licencias-compin-suseso-2026.pdf" download class="hp-btn hp-btn--outline-white" style="padding:0.42rem 0.85rem; font-size:0.76rem;"><span data-lang-es="⬇ Descargar" data-lang-en="⬇ Download">⬇ Descargar</span></a>
+      </div>
+    </article>
+<article class="hp-gemini-pdf-card">
+      <div>
+        <span class="hp-gemini-pdf-card__code">📄 PDF EN ESPAÑOL • PORT-21236-POL-2026-V4 (3 PÁGS.)</span>
+        <h3 class="hp-gemini-pdf-card__title">Anexo Portabilidad Ley 21.236 y Comparador Pólizas 2026</h3>
+        <p class="hp-gemini-pdf-card__desc">Especificación técnica y actuarial en español para comparar créditos externos bajo la Ley N° 21.236 de Portabilidad Financiera frente a Crédito Social Healthy Portal, y matriz comparativa cláusula por cláusula de seguros de Salud, Auto, Vida y Hogar.</p>
+      </div>
+      <div style="display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center;">
+        <a href="/assets/docs/anexo-tecnico-portabilidad-financiera-comparador-polizas-2026.pdf" target="_blank" rel="noopener noreferrer" class="hp-btn hp-btn--gold" style="padding:0.42rem 0.85rem; font-size:0.76rem;"><span data-lang-es="Abrir PDF Oficial ↗" data-lang-en="Open Official PDF ↗">Abrir PDF Oficial ↗</span></a>
+        <a href="/assets/docs/anexo-tecnico-portabilidad-financiera-comparador-polizas-2026.pdf" download class="hp-btn hp-btn--outline-white" style="padding:0.42rem 0.85rem; font-size:0.76rem;"><span data-lang-es="⬇ Descargar" data-lang-en="⬇ Download">⬇ Descargar</span></a>
+      </div>
+    </article>
+<article class="hp-gemini-pdf-card">
+      <div>
+        <span class="hp-gemini-pdf-card__code">📄 PDF EN ESPAÑOL • B2B-ESG-BASILEA-2026-V1 (3 PÁGS.)</span>
+        <h3 class="hp-gemini-pdf-card__title">Reporte B2B Empresas, Solvencia Basilea III y ESG 2026</h3>
+        <p class="hp-gemini-pdf-card__desc">Reporte oficial en español para Directores de RR.HH. de empresas afiliadas e Inversionistas Institucionales: benchmarking de ausentismo laboral, ROI de salud preventiva en terreno, indicadores de solvencia Basilea III, clasificación AA+ y trazabilidad de Bonos Sociales ESG.</p>
+      </div>
+      <div style="display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center;">
+        <a href="/assets/docs/informe-sostenibilidad-finanzas-sociales-esg-b2b-2026.pdf" target="_blank" rel="noopener noreferrer" class="hp-btn hp-btn--gold" style="padding:0.42rem 0.85rem; font-size:0.76rem;"><span data-lang-es="Abrir PDF Oficial ↗" data-lang-en="Open Official PDF ↗">Abrir PDF Oficial ↗</span></a>
+        <a href="/assets/docs/informe-sostenibilidad-finanzas-sociales-esg-b2b-2026.pdf" download class="hp-btn hp-btn--outline-white" style="padding:0.42rem 0.85rem; font-size:0.76rem;"><span data-lang-es="⬇ Descargar" data-lang-en="⬇ Download">⬇ Descargar</span></a>
       </div>
     </article>
           </div>
@@ -1224,6 +1407,7 @@
   <script src="/assets/js/portal-data.js"></script>
   <script src="/assets/js/spanish-docs-corpus.js"></script>
   <script src="/assets/js/gemini-search-engine.js"></script>
+  <script src="/assets/js/gemini-enterprise-cases.js"></script>
   <script src="/assets/js/app.js"></script>
 </body>
 </html>
