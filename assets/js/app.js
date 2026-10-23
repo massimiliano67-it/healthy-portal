@@ -10,6 +10,75 @@
     return '$' + Math.round(amount).toLocaleString('en-US');
   }
 
+  function getLang() {
+    return window.HP_CURRENT_LANG === 'en' ? 'en' : 'es';
+  }
+
+  /* 0. Bilingual Language Switcher (ES default | EN) */
+  function applyLanguage(lang) {
+    const normalized = lang === 'en' ? 'en' : 'es';
+    window.HP_CURRENT_LANG = normalized;
+    document.documentElement.setAttribute('lang', normalized);
+    try {
+      localStorage.setItem('hp-lang', normalized);
+    } catch (_) {
+      // ignore storage errors
+    }
+
+    const langNodes = document.querySelectorAll('[data-lang-es]');
+    langNodes.forEach(function (el) {
+      const text = normalized === 'en'
+        ? el.getAttribute('data-lang-en')
+        : el.getAttribute('data-lang-es');
+      if (text !== null) {
+        el.textContent = text;
+      }
+    });
+
+    const placeholderNodes = document.querySelectorAll('[data-placeholder-es]');
+    placeholderNodes.forEach(function (el) {
+      const ph = normalized === 'en'
+        ? el.getAttribute('data-placeholder-en')
+        : el.getAttribute('data-placeholder-es');
+      if (ph !== null) {
+        el.setAttribute('placeholder', ph);
+      }
+    });
+
+    const langButtons = document.querySelectorAll('[data-set-lang]');
+    langButtons.forEach(function (btn) {
+      const btnLang = btn.getAttribute('data-set-lang');
+      const isActive = btnLang === normalized;
+      btn.classList.toggle('is-active', isActive);
+      btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+    });
+
+    if (typeof window.hpRefreshSimulators === 'function') {
+      window.hpRefreshSimulators();
+    }
+  }
+
+  function initLanguageSwitcher() {
+    let saved = 'es';
+    try {
+      const stored = localStorage.getItem('hp-lang');
+      if (stored === 'en' || stored === 'es') {
+        saved = stored;
+      }
+    } catch (_) {
+      saved = 'es';
+    }
+    applyLanguage(saved);
+
+    const langButtons = document.querySelectorAll('[data-set-lang]');
+    langButtons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const targetLang = btn.getAttribute('data-set-lang') === 'en' ? 'en' : 'es';
+        applyLanguage(targetLang);
+      });
+    });
+  }
+
   /* 1. Accessibility Font Size Controls */
   function initFontControls() {
     const saved = localStorage.getItem('hp_font_scale');
@@ -157,18 +226,25 @@
       e.preventDefault();
       if (!input || !output) return;
       const val = input.value.trim();
+      const isEn = getLang() === 'en';
       if (val.length < 5) {
-        output.textContent = 'Please enter a valid Member ID / SSN (e.g., HP-849201-US) to verify your affiliation status.';
+        output.textContent = isEn
+          ? 'Please enter a valid Member ID / SSN (e.g., HP-849201-US) to verify your affiliation status.'
+          : 'Por favor ingresa un ID de Afiliado / SSN válido (ej. HP-849201-US) para verificar tu estado de afiliación.';
         output.style.color = '#B91C1C';
         return;
       }
-      output.textContent = 'Verified: Member ID ' + val + ' is an ACTIVE Healthy Portal Affiliate (Segment: Workers | Tier B | Excess Payment Balance: $48,500 available).';
+      output.textContent = isEn
+        ? 'Verified: Member ID ' + val + ' is an ACTIVE Healthy Portal Affiliate (Segment: Workers | Tier B | Excess Payment Balance: $48,500 available).'
+        : 'Verificado: El ID de Afiliado ' + val + ' es Afiliado ACTIVO de Healthy Portal (Segmento: Trabajadores | Tramo B | Saldo de Excedentes: $48,500 disponibles).';
       output.style.color = '#0D9488';
     });
   }
 
   /* 6. Interactive Category Simulators */
   function initSimulators() {
+    const updaters = [];
+
     /* A. Credits Simulator */
     const creditForm = document.getElementById('hp-sim-credit');
     if (creditForm) {
@@ -180,6 +256,7 @@
       const totalOut = document.getElementById('sim-credit-total');
 
       function updateCredit() {
+        const isEn = getLang() === 'en';
         const principal = Math.max(100, Number(amountEl.value) || 2500);
         const months = Math.max(6, Number(monthsEl.value) || 24);
         const isRetiree = segmentEl && segmentEl.value === 'retiree';
@@ -189,12 +266,13 @@
         const total = payment * months;
         const cae = ((Math.pow(1 + monthlyRate, 12) - 1) * 100 + 1.4).toFixed(2) + '%';
 
-        if (monthlyOut) monthlyOut.textContent = formatUSD(payment) + ' / mo';
-        if (caeOut) caeOut.textContent = 'APR: ' + cae;
-        if (totalOut) totalOut.textContent = 'Total Loan Cost: ' + formatUSD(total);
+        if (monthlyOut) monthlyOut.textContent = formatUSD(payment) + (isEn ? ' / mo' : ' / mes');
+        if (caeOut) caeOut.textContent = (isEn ? 'APR: ' : 'CAE: ') + cae;
+        if (totalOut) totalOut.textContent = (isEn ? 'Total Loan Cost: ' : 'Costo Total del Crédito: ') + formatUSD(total);
       }
 
       creditForm.addEventListener('input', updateCredit);
+      updaters.push(updateCredit);
       updateCredit();
     }
 
@@ -208,6 +286,7 @@
       const paidDaysOut = document.getElementById('sim-leave-paiddays');
 
       function updateLeave() {
+        const isEn = getLang() === 'en';
         const netSalary = Math.max(300, Number(salaryEl.value) || 1450);
         const days = Math.max(1, Number(daysEl.value) || 11);
         const isMaternity = typeEl && typeEl.value === 'maternity';
@@ -217,11 +296,14 @@
 
         if (payoutOut) payoutOut.textContent = formatUSD(totalPayout);
         if (paidDaysOut) {
-          paidDaysOut.textContent = paidDays + ' payable days (Daily rate: ' + formatUSD(dailyRate) + ')';
+          paidDaysOut.textContent = isEn
+            ? paidDays + ' payable days (Daily rate: ' + formatUSD(dailyRate) + ')'
+            : paidDays + ' días pagaderos ( Subsidio diario: ' + formatUSD(dailyRate) + ')';
         }
       }
 
       leaveForm.addEventListener('input', updateLeave);
+      updaters.push(updateLeave);
       updateLeave();
     }
 
@@ -234,16 +316,22 @@
       const covOut = document.getElementById('sim-ins-coverage');
 
       function updateIns() {
+        const isEn = getLang() === 'en';
         const baseMap = { auto: 34, health: 22, life: 16, home: 19, travel: 12 };
         const multMap = { standard: 1, full: 1.45, elite: 1.9 };
         const plan = planEl ? planEl.value : 'auto';
         const tier = tierEl ? tierEl.value : 'full';
         const monthly = (baseMap[plan] || 25) * (multMap[tier] || 1);
-        if (priceOut) priceOut.textContent = formatUSD(monthly) + ' / month';
-        if (covOut) covOut.textContent = 'Includes 24/7 Healthy Assistance + $0 deductible on member network';
+        if (priceOut) priceOut.textContent = formatUSD(monthly) + (isEn ? ' / month' : ' / mes');
+        if (covOut) {
+          covOut.textContent = isEn
+            ? 'Includes 24/7 Healthy Assistance + $0 deductible on member network'
+            : 'Incluye Asistencia Healthy 24/7 + $0 deducible en red de afiliados';
+        }
       }
 
       insForm.addEventListener('input', updateIns);
+      updaters.push(updateIns);
       updateIns();
     }
 
@@ -257,6 +345,7 @@
       const bonusOut = document.getElementById('sim-sav-bonus');
 
       function updateSavings() {
+        const isEn = getLang() === 'en';
         const initial = Math.max(0, Number(initEl.value) || 1000);
         const monthly = Math.max(10, Number(monthlyEl.value) || 150);
         const years = Math.max(1, Number(yearsEl.value) || 5);
@@ -266,10 +355,15 @@
         const stateBonus = Math.min(monthly * 12 * 0.15, 360) * years;
 
         if (projOut) projOut.textContent = formatUSD(fv + stateBonus);
-        if (bonusOut) bonusOut.textContent = 'Includes estimated 15% Federal Match Bonus: ' + formatUSD(stateBonus);
+        if (bonusOut) {
+          bonusOut.textContent = isEn
+            ? 'Includes estimated 15% Federal Match Bonus: ' + formatUSD(stateBonus)
+            : 'Incluye Bono Estatal Estimado del 15%: ' + formatUSD(stateBonus);
+        }
       }
 
       savForm.addEventListener('input', updateSavings);
+      updaters.push(updateSavings);
       updateSavings();
     }
 
@@ -282,27 +376,47 @@
       const trancheOut = document.getElementById('sim-soc-tranche');
 
       function updateSocial() {
+        const isEn = getLang() === 'en';
         const income = Math.max(0, Number(incEl.value) || 680);
         const deps = Math.max(1, Number(depsEl.value) || 2);
         let perDep = 0;
-        let tranche = 'Tier D (Exempt / Benefit Access Only)';
+        let tranche = isEn
+          ? 'Tier D (Exempt / Benefit Access Only)'
+          : 'Tramo D (Exento / Acceso a Beneficios)';
         if (income <= 586) {
           perDep = 22;
-          tranche = 'Tier A (Maximum Statutory Allowance)';
+          tranche = isEn
+            ? 'Tier A (Maximum Statutory Allowance)'
+            : 'Tramo A (Asignación Legal Máxima)';
         } else if (income <= 856) {
           perDep = 14;
-          tranche = 'Tier B (Intermediate Statutory Allowance)';
+          tranche = isEn
+            ? 'Tier B (Intermediate Statutory Allowance)'
+            : 'Tramo B (Asignación Legal Intermedia)';
         } else if (income <= 1335) {
           perDep = 5;
-          tranche = 'Tier C (Standard Statutory Allowance)';
+          tranche = isEn
+            ? 'Tier C (Standard Statutory Allowance)'
+            : 'Tramo C (Asignación Legal Estándar)';
         }
-        if (allowOut) allowOut.textContent = formatUSD(perDep * deps) + ' / month';
-        if (trancheOut) trancheOut.textContent = tranche + ' for ' + deps + ' registered dependent(s)';
+        if (allowOut) allowOut.textContent = formatUSD(perDep * deps) + (isEn ? ' / month' : ' / mes');
+        if (trancheOut) {
+          trancheOut.textContent = isEn
+            ? tranche + ' for ' + deps + ' registered dependent(s)'
+            : tranche + ' para ' + deps + ' carga(s) acreditada(s)';
+        }
       }
 
       socForm.addEventListener('input', updateSocial);
+      updaters.push(updateSocial);
       updateSocial();
     }
+
+    window.hpRefreshSimulators = function () {
+      updaters.forEach(function (fn) {
+        fn();
+      });
+    };
   }
 
   /* 7. Lusion.co 3D Glossy Cross-Jack Canvas Stage Renderer */
@@ -591,7 +705,9 @@
           openLink.setAttribute('href', cit.pdfDeepLink);
           openLink.setAttribute('target', '_blank');
           openLink.setAttribute('rel', 'noopener noreferrer');
-          openLink.textContent = '📄 Abrir PDF (Pág. ' + String(cit.pageNumber || 1) + ') ↗';
+          openLink.textContent = getLang() === 'en'
+            ? '📄 Open PDF (Page ' + String(cit.pageNumber || 1) + ') ↗'
+            : '📄 Abrir PDF (Pág. ' + String(cit.pageNumber || 1) + ') ↗';
           actionsDiv.appendChild(openLink);
         }
 
@@ -621,7 +737,9 @@
         rLabel.style.fontSize = '0.76rem';
         rLabel.style.fontWeight = '800';
         rLabel.style.color = '#2b2e3a';
-        rLabel.textContent = '🔗 Trámites y Simuladores Relacionados en Healthy Portal:';
+        rLabel.textContent = getLang() === 'en'
+          ? '🔗 Related Procedures & Simulators in Healthy Portal:'
+          : '🔗 Trámites y Simuladores Relacionados en Healthy Portal:';
         routesBar.appendChild(rLabel);
 
         routes.forEach(function (rt) {
@@ -643,7 +761,23 @@
     let activeRequestId = 0;
     const submitBtn = form.querySelector('button[type="submit"]');
 
+    function setSubmitButtonState(isLoading) {
+      if (!submitBtn) return;
+      submitBtn.disabled = isLoading;
+      const isEn = getLang() === 'en';
+      const innerSpan = submitBtn.querySelector('[data-lang-es]');
+      const labelText = isLoading
+        ? (isEn ? '⏳ Searching...' : '⏳ Buscando...')
+        : (isEn ? '✨ Search with Gemini →' : '✨ Buscar con Gemini →');
+      if (innerSpan) {
+        innerSpan.textContent = labelText;
+      } else {
+        submitBtn.textContent = labelText;
+      }
+    }
+
     function renderGeminiLoading(queryText) {
+      const isEn = getLang() === 'en';
       const loadingCard = document.createElement('div');
       loadingCard.className = 'hp-gemini-overview';
       loadingCard.style.padding = '1.25rem 1.5rem';
@@ -657,14 +791,15 @@
 
       const leftSpan = document.createElement('span');
       leftSpan.className = 'hp-gemini-overview__engine';
-      leftSpan.textContent =
-        '⏳ Buscando resultados para "' +
-        queryText +
-        '" en Discovery Engine (healthy-portal-spanish-ds) + Vector Search (768-D)...';
+      leftSpan.textContent = isEn
+        ? '⏳ Searching results for "' + queryText + '" in Discovery Engine (healthy-portal-spanish-ds) + Vector Search (768-D)...'
+        : '⏳ Buscando resultados para "' + queryText + '" en Discovery Engine (healthy-portal-spanish-ds) + Vector Search (768-D)...';
 
       const rightSpan = document.createElement('span');
       rightSpan.className = 'hp-gemini-overview__confidence';
-      rightSpan.textContent = 'Sintetizando con Gemini 3 Flash...';
+      rightSpan.textContent = isEn
+        ? 'Synthesizing with Gemini 3 Flash...'
+        : 'Sintetizando con Gemini 3 Flash...';
 
       statusRow.appendChild(leftSpan);
       statusRow.appendChild(rightSpan);
@@ -682,11 +817,7 @@
 
       const requestId = ++activeRequestId;
       renderGeminiLoading(q);
-
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.textContent = '⏳ Buscando...';
-      }
+      setSubmitButtonState(true);
 
       fetch('/api/gemini-search?q=' + encodeURIComponent(q))
         .then(function (resp) {
@@ -706,9 +837,8 @@
           }
         })
         .finally(function () {
-          if (requestId === activeRequestId && submitBtn) {
-            submitBtn.disabled = false;
-            submitBtn.textContent = '✨ Buscar con Gemini →';
+          if (requestId === activeRequestId) {
+            setSubmitButtonState(false);
           }
         });
     }
@@ -734,6 +864,7 @@
     initDirectoryModal();
     initAffiliationChecker();
     initSimulators();
+    initLanguageSwitcher();
     initLusionCanvas();
     initGeminiEnterpriseSearch();
   });

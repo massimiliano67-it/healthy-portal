@@ -265,6 +265,38 @@ ol {
   color: var(--hp-white);
 }
 
+.hp-lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  border-left: 1px solid rgba(43, 46, 58, 0.14);
+  padding-left: 0.75rem;
+}
+
+.hp-lang-btn {
+  background: var(--color-dark-white);
+  border: 1px solid transparent;
+  color: var(--hp-slate-900);
+  border-radius: var(--hp-radius-pill);
+  padding: 0.14rem 0.55rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: var(--hp-transition);
+}
+
+.hp-lang-btn:hover {
+  background: var(--color-grey-blue);
+  color: var(--hp-white);
+}
+
+.hp-lang-btn.is-active {
+  background: var(--color-blue);
+  color: var(--hp-white);
+  box-shadow: 0 2px 8px rgba(26, 47, 251, 0.25);
+}
+
 /* ==========================================================================
    2. Primary Lusion Brand Header & Audience Switcher
    ========================================================================== */
