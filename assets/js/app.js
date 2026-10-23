@@ -640,14 +640,52 @@
       resultsContainer.replaceChildren(card);
     }
 
+    let activeRequestId = 0;
+    const submitBtn = form.querySelector('button[type="submit"]');
+
+    function renderGeminiLoading(queryText) {
+      const loadingCard = document.createElement('div');
+      loadingCard.className = 'hp-gemini-overview';
+      loadingCard.style.padding = '1.25rem 1.5rem';
+
+      const statusRow = document.createElement('div');
+      statusRow.style.display = 'flex';
+      statusRow.style.alignItems = 'center';
+      statusRow.style.justifyContent = 'space-between';
+      statusRow.style.flexWrap = 'wrap';
+      statusRow.style.gap = '0.75rem';
+
+      const leftSpan = document.createElement('span');
+      leftSpan.className = 'hp-gemini-overview__engine';
+      leftSpan.textContent =
+        '⏳ Buscando resultados para "' +
+        queryText +
+        '" en Discovery Engine (healthy-portal-spanish-ds) + Vector Search (768-D)...';
+
+      const rightSpan = document.createElement('span');
+      rightSpan.className = 'hp-gemini-overview__confidence';
+      rightSpan.textContent = 'Sintetizando con Gemini 3 Flash...';
+
+      statusRow.appendChild(leftSpan);
+      statusRow.appendChild(rightSpan);
+      loadingCard.appendChild(statusRow);
+
+      resultsContainer.replaceChildren(loadingCard);
+    }
+
     function executeSearch(queryText) {
       const q = String(queryText || '').trim();
-      if (window.HP_GEMINI_ENGINE && typeof window.HP_GEMINI_ENGINE.searchCorpus === 'function') {
-        const instantResult = window.HP_GEMINI_ENGINE.searchCorpus(q);
-        instantResult.engine =
-          '⚡ Consultando Discovery Engine (healthy-portal-spanish-ds) + Vertex AI Vector Search (768-D) + gemini-3-flash-preview...';
-        instantResult.confidenceScore = 'Sincronizando con Google Cloud Vertex AI...';
-        renderGeminiResult(instantResult);
+      if (!q) {
+        input.focus();
+        return;
+      }
+
+      const requestId = ++activeRequestId;
+      renderGeminiLoading(q);
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = '⏳ Buscando...';
       }
 
       fetch('/api/gemini-search?q=' + encodeURIComponent(q))
@@ -656,12 +694,22 @@
           return resp.json();
         })
         .then(function (serverData) {
+          if (requestId !== activeRequestId) return;
           if (serverData && Array.isArray(serverData.citations)) {
             renderGeminiResult(serverData);
           }
         })
         .catch(function () {
-          // Si no hay conexión de red, se mantiene la vista previa local
+          if (requestId !== activeRequestId) return;
+          if (window.HP_GEMINI_ENGINE && typeof window.HP_GEMINI_ENGINE.searchCorpus === 'function') {
+            renderGeminiResult(window.HP_GEMINI_ENGINE.searchCorpus(q));
+          }
+        })
+        .finally(function () {
+          if (requestId === activeRequestId && submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = '✨ Buscar con Gemini →';
+          }
         });
     }
 
@@ -677,9 +725,6 @@
         executeSearch(promptText);
       });
     });
-
-    // Ejecutar consulta inicial de demostración en español al cargar
-    executeSearch(input.value);
   }
 
   document.addEventListener('DOMContentLoaded', function () {
